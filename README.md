@@ -6,6 +6,11 @@ Possibly a flight tracker
 
 [opensky api](https://github.com/openskynetwork/opensky-api)
 
+## Installing OpenSkyApi
+![Used the pip install method](installing_opensky_screen_shot.png)
+Run ```pip install -e src/python3/python``` 
+**if there is an error with using python3 then just use python/python instead both python 2 & 3 are compatible**
+
 ## Deployment flow
 
  When starting a new task it is always best to work in a new branch
