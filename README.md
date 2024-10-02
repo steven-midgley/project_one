@@ -15,8 +15,8 @@ Run ```pip install -e src/python3/python```
 ## Deployment flow
 
 When starting a new task it is always best to work in a new branch
-```git switch main```
 **if not on main branch**
+```git switch main```
 ```git pull origin main```
 ```git checkout -b <branch-name>```
 
