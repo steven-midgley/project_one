@@ -15,16 +15,16 @@ Run ```pip install -e src/python3/python```
 ## Deployment flow
 
  When starting a new task it is always best to work in a new branch
-		```git switch main```
-	**if not on main branch**
-		```git pull origin main```
-		```git checkout -b <branch-name>```
+ ```git switch main```
+ **if not on main branch**
+ ```git pull origin main```
+ ```git checkout -b <branch-name>```
 
 	Make sure to commit and push often
-		```git status```
-		```git add .```
-		```git commit -m 'commit message'```
-		```git push```
+```git status```
+```git add .```
+```git commit -m 'commit message'```
+```git push```
 	**if it is the first time pushing your branch to the remote repo use**
 		```git push --set-upstream origin <branch-name>```
 
