@@ -13,6 +13,8 @@
 
 ### 1. **Install Project Dependencies**
 
+**All required dependencies are stored in [requirements.txt](requirements.txt)** d
+
 - Open the terminal (VS Code terminal shortcut: macOS `Control + tilde` | Windows `Ctrl + backtick`).
 - Ensure you are in the project root directory, then run:
 
@@ -22,7 +24,7 @@
 
 ### 2. **Download Flight Data from Kaggle**
 
-   *(Note: Data is already included; skip unless necessary.)*
+   **(Note: Data is already included; skip unless necessary.)**  
 
 - Steps to download the data:
      1. Create a free [Kaggle account](https://www.kaggle.com/account/login).
@@ -42,6 +44,8 @@
      5. Unzip and move the `flights.csv` file to the `data` folder.
 
 ### 3. **Install OpenSky API**
+
+**if there is time after completing project tasks with Kaggle data**
 
 - Install OpenSky API dependencies:
 
