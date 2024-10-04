@@ -6,6 +6,16 @@ Possibly a flight tracker
 
 [opensky api](https://github.com/openskynetwork/opensky-api)
 
+## Downloading flights data from [Kaggle](https://www.kaggle.com)
+
+First you'll need to make a free [Kaggle account](https://www.kaggle.com/account/login?phase=startRegisterTab&returnUrl=%2Fdatasets%2Fmahoora00135%2Fflights).
+
+Once you have created an account click on your profile image and select 'settings'. Once there you will see
+a section for API. Go ahead and create a new API key by clicking 'Create New Token'. This will start the
+which will contain your username and api key.
+
+Place the kaggle json in a .env file to protect you access credentials.
+
 ## Installing OpenSkyApi
 
 ![Used the pip install method](installing_opensky_screen_shot.png)
@@ -31,7 +41,7 @@ Make sure to commit and push often
 ## Branch Discipline
 
 There are two branch that will contain all contributors work.
-Those are ```stage``` and ```main```. ```main``` is the Sacred branch. 
+Those are ```stage``` and ```main```. ```main``` is the Sacred branch.
 ```main``` can not be pushed to by any branch. Project manager will handle
 updating ```main```. ```stage``` can be updated by any branch but needs at least 2 people
 to review the merge request before it can be approved. ```stage``` will serve at the
