@@ -7,13 +7,11 @@
 - [Kaggle Dataset](https://www.kaggle.com/datasets/mahoora00135/flights)
 - [OpenSky API](https://github.com/openskynetwork/opensky-api)
 
----
-
 ## Quickstart Guide
 
 ### 1. **Install Project Dependencies**
 
-**All required dependencies are stored in [requirements.txt](requirements.txt)** d
+**All required dependencies are stored in [requirements.txt](requirements.txt)**
 
 - Open the terminal (VS Code terminal shortcut: macOS `Control + tilde` | Windows `Ctrl + backtick`).
 - Ensure you are in the project root directory, then run:
@@ -45,7 +43,7 @@
 
 ### 3. **Install OpenSky API**
 
-**if there is time after completing project tasks with Kaggle data**
+**(Optional: Use the OpenSky API if additional features are needed after completing tasks with the Kaggle data.)**
 
 - Install OpenSky API dependencies:
 
@@ -54,8 +52,6 @@
      ```
 
 - If you encounter issues with `python3`, use `python`.
-
----
 
 ## Deployment Workflow
 
@@ -85,12 +81,8 @@
      git push --set-upstream origin <branch-name>
      ```
 
----
-
 ## Branch Discipline
 
 - **Protected Branch:** `main` – Managed by the project manager. No direct pushes allowed.
 - **Testing Branch:** `stage` – All code contributions are merged into `stage` .
 - Once `stage` is stable and conflict-free, it will be merged into `main`.
-
----
