@@ -1,6 +1,7 @@
 # ide, osx, data access
 .DS_Store
 kaggle/kaggle.json
+.env
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
