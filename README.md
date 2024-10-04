@@ -33,7 +33,7 @@ Once the zip has been downloaded you will need to unzip the file and place the c
 
 ## Installing OpenSkyApi
 
-![Used the pip install method](installing_opensky_screen_shot.png)
+[Used the pip install method](installing_opensky_screen_shot.png)
 Run ```pip install -e src/python3/python``` **if there is an error with using python3 then just use python/python instead both python 2 & 3 are compatible**
 
 ## Deployment flow
