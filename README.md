@@ -1,39 +1,88 @@
 # project_one
 
-Possibly a flight tracker
+**Flight Tracker and Flight Delay Predictor**
 
-## API
+## API References
 
-[opensky api](https://github.com/openskynetwork/opensky-api)
+- [Kaggle Dataset](https://www.kaggle.com/datasets/mahoora00135/flights)
+- [OpenSky API](https://github.com/openskynetwork/opensky-api)
 
-## Installing OpenSkyApi
+## Quickstart Guide
 
-![Used the pip install method](installing_opensky_screen_shot.png)
-Run ```pip install -e src/python3/python```
-**if there is an error with using python3 then just use python/python instead both python 2 & 3 are compatible**
+### 1. **Install Project Dependencies**
 
-## Deployment flow
+**All required dependencies are stored in [requirements.txt](requirements.txt)**
 
-When starting a new task it is always best to work in a new branch
-**if not on main branch**
-```git switch main```
-```git pull origin main```
-```git checkout -b <branch-name>```
+- Open the terminal (VS Code terminal shortcut: macOS `Control + tilde` | Windows `Ctrl + backtick`).
+- Ensure you are in the project root directory, then run:
 
-Make sure to commit and push often
-```git status```
-```git add .```
-```git commit -m 'commit message'```
-```git push```
-**if it is the first time pushing your branch to the remote repo use**
-```git push --set-upstream origin <branch-name>```
+     ```bash
+     pip install -r requirements.txt
+     ```
+
+### 2. **Download Flight Data from Kaggle**
+
+   **(Note: Data is already included; skip unless necessary.)**  
+
+- Steps to download the data:
+     1. Create a free [Kaggle account](https://www.kaggle.com/account/login).
+     2. In Kaggle's settings, generate an API key and download `kaggle.json`.
+     3. Copy `kaggle.json` to the project root and set permissions (Linux/macOS/WSL):
+
+        ```bash
+        chmod 600 kaggle/kaggle.json
+        ```
+
+     4. Download the dataset:
+
+        ```bash
+        kaggle datasets download -d mahoora00135/flights
+        ```
+
+     5. Unzip and move the `flights.csv` file to the `data` folder.
+
+### 3. **Install OpenSky API**
+
+**(Optional: Use the OpenSky API if additional features are needed after completing tasks with the Kaggle data.)**
+
+- Install OpenSky API dependencies:
+
+     ```bash
+     pip install -e src/python3/python
+     ```
+
+- If you encounter issues with `python3`, use `python`.
+
+## Deployment Workflow
+
+### 1. **Branching and Git Commands**
+
+- Create a new branch for each task.
+- If not on `main`, switch to it:
+
+     ```bash
+     git switch main
+     git pull origin main
+     git checkout -b <branch-name>
+     ```
+
+- Commit and push frequently:
+
+     ```bash
+     git status
+     git add .
+     git commit -m 'commit message'
+     git push
+     ```
+
+- For the first push of a new branch:
+
+     ```bash
+     git push --set-upstream origin <branch-name>
+     ```
 
 ## Branch Discipline
 
-There are two branch that will contain all contributors work.
-Those are ```stage``` and ```main```. ```main``` is the Sacred branch. 
-```main``` can not be pushed to by any branch. Project manager will handle
-updating ```main```. ```stage``` can be updated by any branch but needs at least 2 people
-to review the merge request before it can be approved. ```stage``` will serve at the
-testing ground for contributor code additions. If and when ```stage``` is free of
-conflict it will then be merged into main
+- **Protected Branch:** `main` – Managed by the project manager. No direct pushes allowed.
+- **Testing Branch:** `stage` – All code contributions are merged into `stage` .
+- Once `stage` is stable and conflict-free, it will be merged into `main`.
