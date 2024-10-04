@@ -20,25 +20,26 @@
      pip install -r requirements.txt
      ```
 
-### 2. **Downloading Flight Data from Kaggle** (Already Included — *Skip Unless Necessary*)
+### 2. **Download Flight Data from Kaggle**
 
-- If you need to download fresh data:
+   *(Note: Data is already included; skip unless necessary.)*
+
+- Steps to download the data:
      1. Create a free [Kaggle account](https://www.kaggle.com/account/login).
-     2. In Kaggle's settings, create an API key and download `kaggle.json`.
-     3. Copy `kaggle.json` to the project root.
-     4. Set permissions (Linux/macOS/WSL):
+     2. In Kaggle's settings, generate an API key and download `kaggle.json`.
+     3. Copy `kaggle.json` to the project root and set permissions (Linux/macOS/WSL):
 
         ```bash
         chmod 600 kaggle/kaggle.json
         ```
 
-     5. Run the Kaggle download command:
+     4. Download the dataset:
 
         ```bash
         kaggle datasets download -d mahoora00135/flights
         ```
 
-     6. Unzip and place `flights.csv` in the `data` folder.
+     5. Unzip and move the `flights.csv` file to the `data` folder.
 
 ### 3. **Install OpenSky API**
 
@@ -48,16 +49,16 @@
      pip install -e src/python3/python
      ```
 
-- If there is an issue with `python3`, use `python`.
+- If you encounter issues with `python3`, use `python`.
 
 ---
 
 ## Deployment Workflow
 
-### **Branching and Git Commands**
+### 1. **Branching and Git Commands**
 
-- Always create a new branch for each task.
-- If not on `main`:
+- Create a new branch for each task.
+- If not on `main`, switch to it:
 
      ```bash
      git switch main
@@ -74,7 +75,7 @@
      git push
      ```
 
-- For first-time branch pushes:
+- For the first push of a new branch:
 
      ```bash
      git push --set-upstream origin <branch-name>
@@ -84,9 +85,8 @@
 
 ## Branch Discipline
 
-- **Sacred Branch:** `main` – Managed by the project manager. No direct pushes.
-- **Testing Branch:** `stage` – All new code goes through `stage` for review.
-  - At least **two reviewers** must approve before merging into `stage`.
-  - Once `stage` is stable and conflict-free, it will be merged into `main`.
+- **Protected Branch:** `main` – Managed by the project manager. No direct pushes allowed.
+- **Testing Branch:** `stage` – All code contributions are merged into `stage` after at least **two reviewers** approve.
+  - Once `stage` is stable and conflict-free, it is merged into `main`.
 
 ---
