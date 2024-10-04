@@ -1,6 +1,6 @@
 # project_one
 
-**Flight Tracker and Flight Delay Predictor**
+**Flight Tracker and Delay Predictor**
 
 ## API References
 
