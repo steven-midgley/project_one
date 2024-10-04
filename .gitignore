@@ -1,6 +1,6 @@
 # ide, osx, data access
 .DS_Store
-kaggle.json
+kaggle/kaggle.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
