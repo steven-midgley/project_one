@@ -86,7 +86,7 @@
 ## Branch Discipline
 
 - **Protected Branch:** `main` – Managed by the project manager. No direct pushes allowed.
-- **Testing Branch:** `stage` – All code contributions are merged into `stage` after at least **two reviewers** approve.
-  - Once `stage` is stable and conflict-free, it is merged into `main`.
+- **Testing Branch:** `stage` – All code contributions are merged into `stage` .
+- Once `stage` is stable and conflict-free, it will be merged into `main`.
 
 ---
