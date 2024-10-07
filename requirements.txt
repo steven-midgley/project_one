@@ -1,2 +1,7 @@
 src/python3/python
 kaggle
+pandas
+matplotlib
+numpy
+seaborn
+missingno

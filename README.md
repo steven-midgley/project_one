@@ -48,7 +48,7 @@
 - Install OpenSky API dependencies:
 
      ```bash
-     pip install -e src/python3/python
+     pip install src/python3/python
      ```
 
 - If you encounter issues with `python3`, use `python`.
