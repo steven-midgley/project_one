@@ -2,7 +2,7 @@
 
 **Flight Behavior Analysis**
 
-![Airplane Image](images/airplane.jpg)
+![Airplane Image](images/airplane.jpeg)
 
 ## Project Overview
 
