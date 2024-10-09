@@ -1,8 +1,8 @@
-# project_one
+# Project 1: Analyzing Flight Behavior Patterns
 
-**Flight Behavior Analysis**
-
-![Airplane Image](images/airplane.jpeg)
+<div style="text-align: center;">
+    <img src="images/airplane.jpeg" alt="Airplane" width="500" />
+</div>
 
 ## Project Overview
 
