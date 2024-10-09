@@ -113,6 +113,8 @@ The OpenSky API provides real-time flight tracking. This data can be used to com
 
 ## Exploratory Data Analysis (EDA)
 
+In this section, we present statistical summaries and visualizations derived from the flight behavior data. These insights help us understand key performance indicators related to flight operations.
+
 ### Key Insights from Flight Data
 - Add info here... (Summarize the key insights and trends found during your data exploration, such as peak delay times or busiest airports.)
 
