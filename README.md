@@ -1,11 +1,40 @@
 # project_one
 
-**Flight Tracker and Delay Predictor**
+**Flight Behavior Analysis**
 
-## API References
+![Airplane Image](images/airplane.jpg)
 
+## Project Overview
+
+Add info here... (Describe the purpose of the project, the data you're using, and the goals you want to achieve.)
+
+## Objectives
+
+- Add info here ... (Include measurable goals like predicting flight delays, identifying delay trends, etc.)
+
+## Data Sources 
+
+### Kaggle Flight Data
 - [Kaggle Dataset](https://www.kaggle.com/datasets/mahoora00135/flights)
+The dataset from Kaggle includes historical flight data with over 1 million records. Key columns include:
+
+| Column         | Description                                                  |
+|----------------|--------------------------------------------------------------|
+| `id`           | Unique flight identifier                                     |
+| `dep_time`     | Actual departure time (24-hour format)                       |
+| `arr_time`     | Actual arrival time (24-hour format)                         |
+| `dep_delay`    | Departure delay in minutes                                   |
+| `arr_delay`    | Arrival delay in minutes                                     |
+| `carrier`      | Two-letter airline carrier code                              |
+| `origin`       | Origin airport code                                          |
+| `dest`         | Destination airport code                                     |
+| `distance`     | Distance traveled (miles)                                    |
+| `air_time`     | Total time in the air (minutes)
+
+### OpenSky API Data
 - [OpenSky API](https://github.com/openskynetwork/opensky-api)
+The OpenSky API provides real-time flight tracking. This data can be used to compare with historical data to enhance predictions or validate findings.
+
 
 ## Quickstart Guide
 
@@ -53,6 +82,46 @@
 
 - If you encounter issues with `python3`, use `python`.
 
+## Exploratory Data Analysis (EDA)
+
+### Key Insights from Flight Data
+- Add info here... (Summarize the key insights and trends found during your data exploration, such as peak delay times or busiest airports.)
+
+### Sample Visualizations
+
+#### Visualization 1 
+![XXXXXX](images/XXXX.png)
+Explanation:
+
+#### Visualization 2 
+![XXXXXX](images/XXXX.png)
+Explanation:
+
+- **Recommendation:** Add info here.... (Offer any recommendations based on your analysis.)
+
+## Results and Insights
+
+- Add info here.... (Describe the results you obtained, highlighting any important findings related to flight delays or predictions.) 
+
+## Conclusion
+
+Add info here... (Summarize the overall findings and the value of the analysis.)
+
+### Future Work:
+- Add info here... (List any areas for improvement or further analysis, such as incorporating weather data or expanding the dataset.) 
+
+## How to Use
+
+1. **Download Flight Data:** The dataset is available in the `data/` folder. You can also download the latest data from Kaggle as mentioned in the [Quickstart Guide](#quickstart-guide).
+2. **Run the Jupyter Notebook:** Navigate to the `notebooks/` folder and open `flight_analysis.ipynb`. The notebook includes all code and explanations for the data analysis and machine learning models.
+3. **View Visualizations:** All visualizations are saved in the `images/` folder.
+
+## References and Credits
+- [Pandas Documentation](https://pandas.pydata.org/)
+- [Matplotlib Documentation](https://matplotlib.org/)
+- [OpenSky Network API](https://openskynetwork.github.io/opensky-api/)
+- [Kaggle Dataset](https://www.kaggle.com/datasets/mahoora00135/flights)
+
 ## Deployment Workflow
 
 ### 1. **Branching and Git Commands**
@@ -86,3 +155,7 @@
 - **Protected Branch:** `main` – Managed by the project manager. No direct pushes allowed.
 - **Testing Branch:** `stage` – All code contributions are merged into `stage` .
 - Once `stage` is stable and conflict-free, it will be merged into `main`.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
