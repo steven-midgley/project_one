@@ -26,11 +26,9 @@
 
 ## Project Overview
 
-This project is part of an advanced data analysis boot camp, where we aim to explore and analyze flight behavior patterns using datasets from Kaggle and the OpenSky API. Our objective is to uncover significant patterns and correlations in the data that could potentially assist airlines and stakeholders in making informed decisions. 
+This project is part of an AI boot camp that focuses on advanced data analysis. We explore and analyze flight behavior patterns using datasets from Kaggle and the OpenSky API. Our objective is to uncover significant patterns and correlations in the data that could potentially assist airlines and stakeholders in making informed decisions.
 
-Through this analysis, we will develop insights that highlight trends and anomalies in flight behavior, which can be valuable for optimizing operations, enhancing safety protocols, and improving customer satisfaction. This project serves as a practical application of our data analysis skills, demonstrating the techniques and methodologies we have learned throughout the boot camp.
-
-We are excited to share our findings and hope they contribute to the ongoing conversation in the aviation industry about data-driven decision-making.
+Through this analysis, we aim to develop insights that highlight trends and anomalies in flight behavior, providing valuable information for optimizing operations, enhancing safety protocols, and improving customer satisfaction. This project serves as a practical application of our data analysis skills, demonstrating the techniques and methodologies we have learned throughout the AI boot camp.
 
 ---
 
