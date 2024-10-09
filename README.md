@@ -1,14 +1,19 @@
-<div style="text-align: center; color: blue;">
-    <h1>Project 1: Analyzing Flight Behavior Patterns</h1>
-</div>
+# Project 1: Analyzing Flight Behavior Patterns
 
 <div style="text-align: center;">
     <img src="images/airplane.jpeg" alt="Airplane" width="500" />
 </div>
 
+---
+
 ## Project Overview
 
-Add info here... (Describe the purpose of the project, the data you're using, and the goals you want to achieve.)
+This project focuses on analyzing flight behavior patterns using a comprehensive dataset sourced from Kaggle and the OpenSky API. By examining various aspects of flight data, including departure and arrival times, flight durations, delays, and other relevant variables, we aim to uncover meaningful patterns and correlations that can provide insights into airline operations.
+
+Our primary goal is to identify trends that can assist airlines and stakeholders in optimizing flight schedules, improving operational efficiency, and enhancing passenger experience. Through data analysis techniques such as statistical analysis, and data visualization, we hope to reveal insights that can lead to actionable recommendations for decision-makers in the aviation industry.
+
+By leveraging advanced analytics, this project aspires to contribute to the ongoing efforts to enhance the effectiveness and reliability of air travel, ultimately benefiting both airlines and their passengers.
+
 
 ## Objectives
 
