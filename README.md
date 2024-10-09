@@ -1,4 +1,6 @@
-# Project 1: Analyzing Flight Behavior Patterns
+<div style="text-align: center; color: blue;">
+    <h1>Project 1: Analyzing Flight Behavior Patterns</h1>
+</div>
 
 <div style="text-align: center;">
     <img src="images/airplane.jpeg" alt="Airplane" width="500" />
