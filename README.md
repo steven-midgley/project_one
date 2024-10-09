@@ -6,6 +6,23 @@
 
 ---
 
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Objectives](#objectives)
+- [Data Sources](#data-sources)
+- [Quickstart Guide](#quickstart-guide)
+- [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+- [Results and Insights](#results-and-insights)
+- [Conclusion](#conclusion)
+- [How to Use](#how-to-use)
+- [References and Credits](#references-and-credits)
+- [Deployment Workflow](#deployment-workflow)
+- [Branch Discipline](#branch-discipline)
+- [License](#license)
+
+---
+
 ## Project Overview
 
 This project focuses on analyzing flight behavior patterns using a comprehensive dataset sourced from Kaggle and the OpenSky API. By examining various aspects of flight data, including departure and arrival times, flight durations, delays, and other relevant variables, we aim to uncover meaningful patterns and correlations that can provide insights into airline operations.
@@ -14,6 +31,7 @@ Our primary goal is to identify trends that can assist airlines and stakeholders
 
 By leveraging advanced analytics, this project aspires to contribute to the ongoing efforts to enhance the effectiveness and reliability of air travel, ultimately benefiting both airlines and their passengers.
 
+---
 
 ## Objectives
 
