@@ -1,2 +1,8 @@
-icao24
-3c4b26
+icao24,firstSeen,estDepartureAirport,lastSeen,estArrivalAirport,callsign,estDepartureAirportHorizDistance,estDepartureAirportVertDistance,estArrivalAirportHorizDistance,estArrivalAirportVertDistance,departureAirportCandidatesCount,arrivalAirportCandidatesCount
+88044a,1728536445,VTBD,1728539007,,AIQ3239 ,710,42,,,16,0
+7c6b2d,1728538780,YMLT,1728539362,,JST736  ,2151,308,,,33,0
+7c6b40,1728535819,YBBN,1728539371,,JST485  ,1833,18,,,46,0
+e49405,1728536468,SKBO,1728537312,,GLO8241 ,700,117,,,16,0
+880450,1728536106,VTBD,1728538484,,AIQ3184 ,1746,149,,,15,0
+7c2ebe,1728535917,YMNG,1728538360,,JIO     ,4571,1168,,,91,0
+801663,1728536004,,1728537038,,IGO5286 ,,,,,0,0

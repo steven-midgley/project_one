@@ -1,7 +1,8 @@
+import os
+import time
 from opensky_api import OpenSkyApi
 from datetime import datetime, timedelta
 import pandas as pd
-import random
 
 
 # DO MORE WITH THIS DATASET.
@@ -40,13 +41,8 @@ def get_states(api):
 
     df = pd.DataFrame(states_data)
 
-    df.to_csv(
-        "data/flight_states.csv",
-        mode="a",
-        header=False,
-        index=False,
-    )
-    print("Flight states have been saved to 'data/flight_states.csv'.")
+    save_to_csv(df, "data/flight_states.csv")
+
     pass
 
 
@@ -78,13 +74,9 @@ def get_arrivals(api, airport, begin, end):
         )
 
     df = pd.to(arrival_data)
-    df.to_csv(
-        "data/arrivals.csv",
-        mode="a",
-        header=False,
-        index=False,
-    )
-    print("Arrivals have been saved to data/arrivals.csv")
+
+    save_to_csv(df, "data/arrivals.csv")
+
     pass
 
 
@@ -115,13 +107,8 @@ def get_departures(api, airport, begin, end):
         )
 
     df = pd.DataFrame(departure_data)
-    df.to_csv(
-        "data/departures.csv",
-        mode="a",
-        header=False,
-        index=False,
-    )
-    print("Departures have been saved to 'data/departures.csv'.")
+    save_to_csv(df, "data/departures.csv")
+
     pass
 
 
@@ -154,13 +141,8 @@ def get_flights_by_aircraft(api, icao24, begin, end):
         )
 
     df = pd.DataFrame(flights_data)
-    df.to_csv(
-        "data/flights_by_aircraft.csv",
-        mode="a",
-        header=False,
-        index=False,
-    )
-    print("flights have been saved to 'data/flights_by_aircraft.csv'.")
+    save_to_csv(df, "data/flights_by_aircraft.csv")
+
     pass
 
 
@@ -190,13 +172,20 @@ def get_flight_interval(api, begin, end):
         )
 
     df = pd.DataFrame(intervals)
-    df.to_csv(
-        "data/flights_by_interval.csv",
-        mode="a",
-        header=False,
-        index=False,
-    )
+
+    save_to_csv(df, "data/flights_by_interval.csv")
+
     pass
+
+
+def save_to_csv(df, file_path):
+    """Append or create a CSV file based on existence."""
+    if not os.path.isfile(file_path):
+        df.to_csv(file_path, mode="w", header=True, index=False)
+        print(f"Created: {file_path}")
+    else:
+        df.to_csv(file_path, mode="a", header=False, index=False)
+        print(f"Saved: {file_path}")
 
 
 if __name__ == "__main__":
@@ -204,23 +193,120 @@ if __name__ == "__main__":
     last_hour = now - timedelta(minutes=60)
     unix_hour = int(last_hour.timestamp())
     unix_now = int(now.timestamp())
-    api = OpenSkyApi("hadhatter", "287a6655aa625870d39b8acb2a852d25")
+    api = OpenSkyApi()
     airports = ["KATL", "KSLC", "KDFW", "KDEN", "KORD", "OMDB"]
     crafts = [
-        "7c6b2d",
+        "80162c",
+        "4b1818",
+        "aa3cbe",
+        "80162a",
+        "801638",
+        "3d10af",
+        "88044a",
+        "7c6b2f",
         "aa56da",
+        "7c6b2d",
         "88044d",
         "407a38",
         "7c6b41",
         "7c6b40",
+        "a3b87f",
+        "8a02ff",
+        "880454",
+        "880452",
+        "80162f",
+        "880458",
+        "880457",
+        "880456",
+        "e49405",
+        "4b1804",
+        "a90ea8",
+        "880450",
+        "c822bb",
+        "801647",
+        "7c6b1b",
+        "a53eef",
+        "7c6b31",
+        "a71e29",
+        "4952ca",
+        "880443",
+        "4952cb",
+        "7c6b38",
+        "80160a",
+        "80160b",
+        "801615",
+        "c047e5",
+        "aaa6e4",
+        "ac96be",
+        "80160d",
+        "4952c9",
+        "a46e40",
+        "a1d8fd",
+        "7c2ebe",
+        "88045a",
+        "4952c7",
+        "a1025a",
+        "801631",
+        "440db0",
+        "51113f",
+        "801633",
+        "c822e4",
+        "7c6b12",
+        "3c6669",
+        "8a02d6",
+        "3c6667",
+        "3c6666",
+        "aad012",
+        "c822ed",
+        "abacd2",
+        "3c664e",
+        "ab034d",
+        "51116f",
+        "ad3c1f",
+        "3c6664",
+        "3c6663",
+        "80167d",
+        "3c666a",
+        "4952a2",
+        "e4944e",
+        "3c666c",
+        "7c6b73",
+        "3c6672",
+        "3c6670",
+        "841a6c",
+        "3c6674",
+        "a34e9d",
+        "80164f",
+        "a39bfa",
+        "471efa",
+        "471efb",
+        "801659",
+        "471efe",
+        "60111c",
+        "471eff",
+        "ad90a3",
+        "471efc",
+        "471efd",
+        "800332",
+        "801663",
+        "7c6b63",
+        "3c666f",
+        "a3b85b",
+        "801666",
+        "8744d4",
+        "e8026a",
+        "a4d84d",
     ]
 
     get_states(api)
     get_flight_interval(api, unix_hour, unix_now)
     for cr in crafts:
         get_flights_by_aircraft(api, cr, unix_hour, unix_now)
+        time.sleep(1)
     for ap in airports:
         get_arrivals(api, ap, unix_hour, unix_now)
+        time.sleep(1)
     for ap in airports:
         get_departures(api, ap, unix_hour, unix_now)
+        time.sleep(1)
 # HERE GIVE THE icao24 AND DATES IN UNIX TIMESTAMP FORMATION
