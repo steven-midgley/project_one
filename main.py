@@ -51,10 +51,11 @@ def get_states(api):
 def get_arrivals():
     """Fetch and save arrivals by airport to a CSV file."""
     api = OpenSkyApi()
-    print(unix_hour, unix_now)
     arrivals = api.get_arrivals_by_airport("EDDF", unix_hour, unix_now)
-    print(arrivals)
-    # arrivals = api.get_arrivals_by_airport(, 1517227200, 1517230800)
+    if arrivals is None:
+        print("No data received from API for arrivals.")
+        return
+
     arrival_data = []
     for flight in arrivals:
         print(flight)
@@ -80,7 +81,7 @@ def get_arrivals():
     print("Arrivals have been saved to data/arrivals.")
 
 
-get_arrivals()
+# get_arrivals()
 
 
 def get_departures(api, airport_code, begin, end):
