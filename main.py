@@ -10,7 +10,7 @@ def get_states(api):
     states = api.get_states()
 
     if not states:
-        print(f"Returned None from states: {states}")
+        print(f"states data: {states}")
         return
 
     states_data = []
@@ -55,7 +55,7 @@ def get_arrivals(api, airport, begin, end):
     arrivals = api.get_arrivals_by_airport(airport, begin, end)
 
     if arrivals is None:
-        return print(f"Unable to get arrival data: {arrivals}")
+        return print(f"arrival data: {arrivals}")
 
     arrival_data = []
     for flight in arrivals:
@@ -93,7 +93,7 @@ def get_departures(api, airport, begin, end):
     departures = api.get_departures_by_airport(airport, begin, end)
 
     if departures is None:
-        return print(f"Returned None from departures: {departures}")
+        return print(f"departures data: {departures}")
 
     departure_data = []
     for flight in departures:
@@ -131,7 +131,7 @@ def get_flights_by_aircraft(api, icao24, begin, end):
     flights = api.get_flights_by_aircraft(icao24, begin, end)
 
     if flights is None:
-        print("Returned None from flights: {flights}")
+        print(f"aircraft data: {flights}")
         return
 
     flights_data = []
@@ -139,6 +139,17 @@ def get_flights_by_aircraft(api, icao24, begin, end):
         flights_data.append(
             {
                 "icao24": flight.icao24,
+                "firstSeen": flight.firstSeen,
+                "estDepartureAirport": flight.estDepartureAirport,
+                "lastSeen": flight.lastSeen,
+                "estArrivalAirport": flight.estArrivalAirport,
+                "callsign": flight.callsign,
+                "estDepartureAirportHorizDistance": flight.estDepartureAirportHorizDistance,
+                "estDepartureAirportVertDistance": flight.estDepartureAirportVertDistance,
+                "estArrivalAirportHorizDistance": flight.estArrivalAirportHorizDistance,
+                "estArrivalAirportVertDistance": flight.estArrivalAirportVertDistance,
+                "departureAirportCandidatesCount": flight.departureAirportCandidatesCount,
+                "arrivalAirportCandidatesCount": flight.arrivalAirportCandidatesCount,
             }
         )
 
@@ -157,7 +168,7 @@ def get_flight_interval(api, begin, end):
     interval = api.get_flights_from_interval(begin, end)
 
     if not interval:
-        return print(f"Return None from interval: {interval}")
+        return print(f"interval data: {interval}")
 
     intervals = []
     for inte in interval:
@@ -195,16 +206,19 @@ if __name__ == "__main__":
     unix_now = int(now.timestamp())
     api = OpenSkyApi("hadhatter", "287a6655aa625870d39b8acb2a852d25")
     airports = ["KATL", "KSLC", "KDFW", "KDEN", "KORD", "OMDB"]
-
-    # craft_ids_csv = pd.read_csv("data/icao24_craft_ids.csv")
-    # craft_ids_df = pd.DataFrame(craft_ids_csv)
-    # craft_ids = craft_ids_df.sample(n=6).to_list()
-
-    # print(craft_ids)
+    crafts = [
+        "7c6b2d",
+        "aa56da",
+        "88044d",
+        "407a38",
+        "7c6b41",
+        "7c6b40",
+    ]
 
     get_states(api)
-    get_flights_by_aircraft(api, "3c4b26", unix_hour, unix_now)
     get_flight_interval(api, unix_hour, unix_now)
+    for cr in crafts:
+        get_flights_by_aircraft(api, cr, unix_hour, unix_now)
     for ap in airports:
         get_arrivals(api, ap, unix_hour, unix_now)
     for ap in airports:
