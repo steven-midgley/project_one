@@ -1,0 +1,4 @@
+icao24,firstSeen,firstSeen_utc,estDepartureAirport,lastSeen,lastSeen_uts,estArrivalAirport,callsign,estDepartureAirportHorizDistance,estDepartureAirportVertDistance,estArrivalAirportHorizDistance,estArrivalAirportVertDistance,departureAirportCandidatesCount,arrivalAirportCandidatesCount
+7c38ba,1728538528,2024-10-10 05:35:28+00:00,YSBK,1728538528,2024-10-10 05:35:28+00:00,YSBK,LHO     ,891,24,886,24,35,35
+7c6ac5,1728538946,2024-10-10 05:42:26+00:00,YBLT,1728540257,2024-10-10 06:04:17+00:00,YMAV,VDJ     ,1481,584,795,71,91,83
+a0c538,1728537646,2024-10-10 05:20:46+00:00,KMFR,1728538987,2024-10-10 05:43:07+00:00,KS03,N149MF  ,14138,1703,16020,2275,74,54

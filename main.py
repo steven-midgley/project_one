@@ -1,7 +1,7 @@
 import os
 import time
 from opensky_api import OpenSkyApi
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import pandas as pd
 
 
@@ -23,6 +23,9 @@ def get_states(api):
                 "origin_country": s.origin_country,
                 "time_position": s.time_position,
                 "last_contact": s.last_contact,
+                "last_contact_utc": datetime.fromtimestamp(
+                    s.last_contact, tz=timezone.utc
+                ),
                 "longitude": s.longitude,
                 "latitude": s.latitude,
                 "geo_altitude": s.geo_altitude,
@@ -60,8 +63,14 @@ def get_arrivals(api, airport, begin, end):
             {
                 "icao24": flight.icao24,
                 "firstSeen": flight.firstSeen,
+                "firstSeen_utc": datetime.fromtimestamp(
+                    flight.firstSeen, tz=timezone.utc
+                ),
                 "estDepartureAirport": flight.estDepartureAirport,
                 "lastSeen": flight.lastSeen,
+                "lastSeen_uts": datetime.fromtimestamp(
+                    flight.lastSeen, tz=timezone.utc
+                ),
                 "estArrivalAirport": flight.estArrivalAirport,
                 "callsign": flight.callsign,
                 "estDepartureAirportHorizDistance": flight.estDepartureAirportHorizDistance,
@@ -73,7 +82,7 @@ def get_arrivals(api, airport, begin, end):
             }
         )
 
-    df = pd.to(arrival_data)
+    df = pd.DataFrame(arrival_data)
 
     save_to_csv(df, "data/arrivals.csv")
 
@@ -93,8 +102,14 @@ def get_departures(api, airport, begin, end):
             {
                 "icao24": flight.icao24,
                 "firstSeen": flight.firstSeen,
+                "firstSeen_utc": datetime.fromtimestamp(
+                    flight.firstSeen, tz=timezone.utc
+                ),
                 "estDepartureAirport": flight.estDepartureAirport,
                 "lastSeen": flight.lastSeen,
+                "lastSeen_uts": datetime.fromtimestamp(
+                    flight.lastSeen, tz=timezone.utc
+                ),
                 "estArrivalAirport": flight.estArrivalAirport,
                 "callsign": flight.callsign,
                 "estDepartureAirportHorizDistance": flight.estDepartureAirportHorizDistance,
@@ -107,6 +122,7 @@ def get_departures(api, airport, begin, end):
         )
 
     df = pd.DataFrame(departure_data)
+
     save_to_csv(df, "data/departures.csv")
 
     pass
@@ -127,8 +143,14 @@ def get_flights_by_aircraft(api, icao24, begin, end):
             {
                 "icao24": flight.icao24,
                 "firstSeen": flight.firstSeen,
+                "firstSeen_utc": datetime.fromtimestamp(
+                    flight.firstSeen, tz=timezone.utc
+                ),
                 "estDepartureAirport": flight.estDepartureAirport,
                 "lastSeen": flight.lastSeen,
+                "lastSeen_uts": datetime.fromtimestamp(
+                    flight.lastSeen, tz=timezone.utc
+                ),
                 "estArrivalAirport": flight.estArrivalAirport,
                 "callsign": flight.callsign,
                 "estDepartureAirportHorizDistance": flight.estDepartureAirportHorizDistance,
@@ -141,6 +163,7 @@ def get_flights_by_aircraft(api, icao24, begin, end):
         )
 
     df = pd.DataFrame(flights_data)
+
     save_to_csv(df, "data/flights_by_aircraft.csv")
 
     pass
@@ -166,8 +189,12 @@ def get_flight_interval(api, begin, end):
                 "estDepartureAirportHorizDistance": inte.estDepartureAirportHorizDistance,
                 "estDepartureAirportVertDistance": inte.estDepartureAirportVertDistance,
                 "firstSeen": inte.firstSeen,
+                "firstSeen_utc": datetime.fromtimestamp(
+                    inte.firstSeen, tz=timezone.utc
+                ),
                 "icao24": inte.icao24,
                 "lastSeen": inte.lastSeen,
+                "lastSeen_utc": datetime.fromtimestamp(inte.lastSeen, tz=timezone.utc),
             }
         )
 
@@ -194,7 +221,29 @@ if __name__ == "__main__":
     unix_hour = int(last_hour.timestamp())
     unix_now = int(now.timestamp())
     api = OpenSkyApi()
-    airports = ["KATL", "KSLC", "KDFW", "KDEN", "KORD", "OMDB"]
+    airports = [
+        "KATL",
+        "KSLC",
+        "KDFW",
+        "KDEN",
+        "KORD",
+        "OMDB",
+        "ESSA",
+        "LIMC",
+        "LIAU",
+        "EPKK",
+        "WSAC",
+        "YSBK",
+        "YMYB",
+        "YMEN",
+        "YKEL",
+        "YNHS",
+        "YMAV",
+        "YPJI",
+        "VECC",
+        "KS03",
+        "KABQ",
+    ]
     crafts = [
         "80162c",
         "4b1818",
