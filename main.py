@@ -5,8 +5,8 @@ import pandas as pd
 
 def initialize_api():
     """Initialize the OpenSky API."""
-    sky_api = OpenSkyApi()
-    return sky_api
+    api = OpenSkyApi("hadhatter", "287a6655aa625870d39b8acb2a852d25")
+    return api
 
 
 # DO MORE WITH THIS DATASET.
@@ -18,21 +18,21 @@ def get_flight_states(api):
     for s in states.states:
         flight_data.append(
             {
-                "Longitude": s.longitude,
-                "Latitude": s.latitude,
-                "Barometric Altitude": s.baro_altitude,
-                "Velocity": s.velocity,
+                "icao24": s.icao24,
+                "lon": s.longitude,
+                "lat": s.latitude,
+                "baro_alt": s.baro_altitude,
+                "velocity": s.velocity,
             }
         )
 
     df = pd.DataFrame(flight_data)
 
-    df.to_csv("data/test_flight_states.csv", index=False)
-    print(f"Flight states have been saved to 'flight_states.csv'.")
+    df.to_csv("data/flight_states.csv", index=False)
+    print("Flight states have been saved to 'flight_states.csv'.")
 
 
-# api = initialize_api()
-# get_flight_states(api)
+get_flight_states(initialize_api())
 
 
 def get_arrivals(api, airport_code, begin, end):
@@ -43,20 +43,24 @@ def get_arrivals(api, airport_code, begin, end):
     for flight in arrivals:
         arrival_data.append(
             {
-                "Arrival Airport": flight.estArrivalAirport,
-                "Departure Airport": flight.estDepartureAirport,
-                "Arrival Time": flight.lastSeen,
-                "Time of Departure": flight.firstSeen,
+                "icao24": flight.icao24,
+                "arrival": flight.lastSeen,
+                "destination": flight.estArrivalAirport,
+                "origin": flight.estDepartureAirport,
+                "departure": flight.firstSeen,
+                "dist_frm_orig_h": flight.estDepartureAirportHorizDistance,
+                "dist_frm_orig_v": flight.estDepartureAirportVertDistance,
+                "dist_frm_dest_h": flight.estArrivalAirportHorizDistance,
+                "dist_frm_dest_v": flight.estArrivalAirportVertDistance,
             }
         )
 
-    df = pd.DataFrame(arrival_data)
-    df.to_csv("data/test_arrivals.csv", index=False)
-    print(f"Arrivals have been saved to 'arrivals.csv'.")
+    df = pd.to(arrival_data)
+    df.to_csv("data/arrivals.csv", index=False)
+    print("Arrivals have been saved to data/.")
 
 
-api = initialize_api()
-get_arrivals(api, "EDDF", 1672556401, 1673074801)
+get_arrivals(initialize_api(), "EDDF", 1688686800, 1689291600)
 # HERE GIVE THE CODE FOR AIRPORT AND DATES IN UNIX TIMESTAMP FORMATION
 
 
@@ -68,28 +72,28 @@ def get_departures(api, airport_code, begin, end):
     for flight in departures:
         departure_data.append(
             {
-                "Time of Departure": flight.firstSeen,
-                "Departure Airport": flight.estDepartureAirport,
-                "Arrival Airport": flight.estArrivalAirport,
-                "Arrival Time": flight.lastSeen,
-                "Horizonal Distance From Departure": flight.estDepartureAirportHorizDistance,
-                "Vertical Distance From Departure": flight.estDepartureAirportVertDistance,
-                "Horizonal Distance From Arrival": flight.estArrivalAirportHorizDistance,
-                "Vertical Distance From Arrival": flight.estArrivalAirportVertDistance,
+                "icao24": flight.icao24,
+                "departure": flight.firstSeen,
+                "origin": flight.estDepartureAirport,
+                "destination": flight.estArrivalAirport,
+                "arrival": flight.lastSeen,
+                "dist_frm_orig_h": flight.estDepartureAirportHorizDistance,
+                "dist_frm_orig_v": flight.estDepartureAirportVertDistance,
+                "dist_frm_dest_h": flight.estArrivalAirportHorizDistance,
+                "dist_frm_dest_v": flight.estArrivalAirportVertDistance,
             }
         )
 
     df = pd.DataFrame(departure_data)
-    df.to_csv("departures.csv", index=False)
-    print(f"Departures have been saved to 'departures.csv'.")
+    df.to_csv("data/departures.csv", index=False)
+    print("Departures have been saved to 'departures.csv'.")
 
 
-api = initialize_api()
-# get_departures(api,"EDDF",1672556401,1673074801)
+get_departures(initialize_api(), "EDDF", 1688686800, 1689291600)
 # HERE GIVE THE CODE FOR AIRPORT AND DATES IN UNIX TIMESTAMP FORMATION
 
 
-# EXPEREMENTAL WORK BY API SO NOT THE MOST RELYABLE SOURCE OF INFO
+# EXPERIMENTAL WORK BY API SO NOT THE MOST RELIABLE SOURCE OF INFO
 def get_flights(api, icao24, begin, end):
     """Fetch flights by aircraft and save to a CSV file."""
     flights = api.get_flights_by_aircraft(icao24, begin, end)
@@ -99,22 +103,21 @@ def get_flights(api, icao24, begin, end):
         flights_data.append(
             {
                 "icao24": flight.icao24,
-                "Time of Departure": flight.firstSeen,
-                "Departure Airport": flight.estDepartureAirport,
-                "Arrival Airport": flight.estArrivalAirport,
-                "Arrival Time": flight.lastSeen,
-                "Horizonal Distance From Departure": flight.estDepartureAirportHorizDistance,
-                "Vertical Distance From Departure": flight.estDepartureAirportVertDistance,
-                "Horizonal Distance From Arrival": flight.estArrivalAirportHorizDistance,
-                "Vertical Distance From Arrival": flight.estArrivalAirportVertDistance,
+                "departed": flight.firstSeen,
+                "origin": flight.estDepartureAirport,
+                "destination": flight.estArrivalAirport,
+                "arrived": flight.lastSeen,
+                "dist_frm_orig_h": flight.estDepartureAirportHorizDistance,
+                "dist_frm_orig_v": flight.estDepartureAirportVertDistance,
+                "dist_frm_dest_h": flight.estArrivalAirportHorizDistance,
+                "dist_frm_dest_v": flight.estArrivalAirportVertDistance,
             }
         )
 
     df = pd.DataFrame(flights_data)
-    df.to_csv("flights_by_aircraft.csv", index=False)
-    print(f"flights have been saved to 'flights_by_aircraft.csv'.")
+    df.to_csv("data/flights_by_aircraft.csv", index=False)
+    print("flights have been saved to 'flights_by_aircraft.csv'.")
 
 
-api = initialize_api()
-# get_flights(api,"3c4b26",1672556401,1673074801)
+get_flights(initialize_api(), "3c4b26", 1688686800, 1689291600)
 # HERE GIVE THE icao24 AND DATES IN UNIX TIMESTAMP FORMATION

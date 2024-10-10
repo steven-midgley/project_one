@@ -6,36 +6,7 @@ class DataHandler:
     def __init__(self, df):
         self.df = df
 
-    def determine_time_unit(self, timestamp="0"):
-        timestamp = pd.to_numeric(timestamp, errors="coerce")
-        # Assuming milliseconds
-        dt_milli = pd.to_datetime(timestamp, unit="ms")
-        dt_seconds = pd.to_datetime(timestamp, unit="s")
-        dt_minutes = pd.to_datetime(timestamp, unit="m")
-
-        # Current time
-        is_now = datetime.now()
-
-        match (dt_milli, dt_seconds, dt_minutes):
-            case (dt, _, _) if pd.notna(dt) and dt <= is_now:
-                return "milliseconds", dt_milli
-            case (_, dt, _) if pd.notna(dt) and dt <= is_now:
-                return "seconds", dt_seconds
-            case (_, _, dt) if pd.notna(dt) and dt <= is_now:
-                return "minutes", dt_minutes
-            case _:
-                return "Unknown format", None
-
-    def normalize_time(self):
-        """
-        This will normalize time in two ways.
-        It will create new columns for each time column with a human readable timestamp.
-        it will also create new columns for minutes-since-minute.
-        Purpose:
-          I ( as human ) want to be able to see the dates of the events and having
-          minutes-since-midnight will allow for better plotting and correlation tracking
-        """
-
+    def identify_time_columns(self):
         # Identify cols with timestamps
         datetime_columns = []
         for col in self.df:
@@ -43,16 +14,61 @@ class DataHandler:
                 self.df[col]
             ):
                 datetime_columns.append(col)
-                DataHandler.determine_time_unit(self.df[col])
-        print(datetime_columns)
         return datetime_columns
+
+    def normalize_time(self, timestamp):
+        """
+        This will normalize time in two ways.
+        1. It will create new columns for each time column with a human readable timestamp.
+        2. it will also create new columns for minutes-since-minute.
+          columns = datetime_cols (used to insert new column in correct location)
+        """
+        timestamp = pd.to_numeric(timestamp, downcast="integer")
+
+        dt_seconds = pd.to_datetime(timestamp, unit="s", errors="coerce")
+        dt_minutes = pd.to_datetime(timestamp, unit="m", errors="coerce")
+
+        # Current time for comparison
+        now = datetime.now()
+
+        # Store the best guess results
+        human_readable = []
+        minutes_since_midnight = []
+
+        # Iterate over the Series row by row
+        for i in range(len(timestamp)):
+            seconds_value = dt_seconds.iloc[i]
+            minutes_value = dt_minutes.iloc[i]
+
+            # Apply logic to choose the correct format based on what is plausible
+            if pd.notna(seconds_value) and seconds_value <= now:
+                human_readable.append(seconds_value)
+                minutes_since_midnight.append(
+                    seconds_value.hour * 60 + seconds_value.minute
+                )
+            elif pd.notna(minutes_value) and minutes_value <= now:
+                human_readable.append(minutes_value)
+                minutes_since_midnight.append(
+                    minutes_value.hour * 60 + minutes_value.minute
+                )
+            else:
+                human_readable.append(pd.NaT)
+                minutes_since_midnight.append(None)
+
+        # insert new columns
+        self.df["readable"] = human_readable
+        self.df["minutes_since_midnight"] = minutes_since_midnight
 
     # FOR TESTING!!
     def main():
         data_csv = pd.read_csv("data/arrivals.csv")
         df = pd.DataFrame(data_csv)
         dh = DataHandler(df)
-        dh.normalize_time()
+        time_cols = dh.identify_time_columns()
+        for index, tc in enumerate(time_cols):
+            dh.normalize_time(df[f"{tc}"])
+            print(index)
+        print(df.sample(n=5))
 
 
 if __name__ == "__main__":
