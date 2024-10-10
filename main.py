@@ -1,26 +1,22 @@
 from opensky_api import OpenSkyApi
-import datetime
+from datetime import datetime, timedelta
 import pandas as pd
 
 
-def initialize_api():
-    """Initialize the OpenSky API."""
-    # "hadhatter", "287a6655aa625870d39b8acb2a852d25"
-    sky_api = OpenSkyApi()
-    return sky_api
-
-
-api = initialize_api()
+now = datetime.now()
+last_hour = now - timedelta(minutes=60)
+unix_hour = int(last_hour.timestamp())
+unix_now = int(now.timestamp())
 
 
 # DO MORE WITH THIS DATASET.
-def get_flight_states(api):
+def get_states(api):
     """Fetch and save the current states of all flights to a CSV file."""
+    list_states = []
     states = api.get_states()
 
-    flight_data = []
     for s in states.states:
-        flight_data.append(
+        list_states.append(
             {
                 "icao24": s.icao24,
                 "callsign": s.callsign,
@@ -43,21 +39,25 @@ def get_flight_states(api):
             }
         )
 
-    df = pd.DataFrame(flight_data)
+    df = pd.DataFrame(list_states)
 
     df.to_csv("data/flight_states.csv", index=False)
     print("Flight states have been saved to 'flight_states.csv'.")
 
 
-get_flight_states(api)
+# get_states(OpenSkyApi())
 
 
-def get_arrivals(api, airport_code, begin, end):
+def get_arrivals():
     """Fetch and save arrivals by airport to a CSV file."""
-    arrivals = api.get_arrivals_by_airport(airport_code, begin, end)
+    api = OpenSkyApi()
+    print(unix_hour, unix_now)
+    arrivals = api.get_arrivals_by_airport("EDDF", unix_hour, unix_now)
     print(arrivals)
+    # arrivals = api.get_arrivals_by_airport(, 1517227200, 1517230800)
     arrival_data = []
     for flight in arrivals:
+        print(flight)
         arrival_data.append(
             {
                 "icao24": flight.icao24,
@@ -77,11 +77,10 @@ def get_arrivals(api, airport_code, begin, end):
 
     df = pd.to(arrival_data)
     df.to_csv("data/arrivals.csv", index=False)
-    print("Arrivals have been saved to data/.")
+    print("Arrivals have been saved to data/arrivals.")
 
 
-get_arrivals(api, "EDDF", 1688686800, 1689291600)
-# HERE GIVE THE CODE FOR AIRPORT AND DATES IN UNIX TIMESTAMP FORMATION
+get_arrivals()
 
 
 def get_departures(api, airport_code, begin, end):
@@ -112,8 +111,7 @@ def get_departures(api, airport_code, begin, end):
     print("Departures have been saved to 'departures.csv'.")
 
 
-get_departures(api, "EDDF", 1688686800, 1689291600)
-# HERE GIVE THE CODE FOR AIRPORT AND DATES IN UNIX TIMESTAMP FORMATION
+# get_departures(OpenSkyApi(), "EDDF", unix_hour, unix_now)
 
 
 # EXPERIMENTAL WORK BY API SO NOT THE MOST RELIABLE SOURCE OF INFO
@@ -138,5 +136,5 @@ def get_flights(api, icao24, begin, end):
     print("flights have been saved to 'flights_by_aircraft.csv'.")
 
 
-get_flights(api, "3c4b26", 1688686800, 1689291600)
+# get_flights(OpenSkyApi(), "3c4b26", unix_hour, unix_now)
 # HERE GIVE THE icao24 AND DATES IN UNIX TIMESTAMP FORMATION
