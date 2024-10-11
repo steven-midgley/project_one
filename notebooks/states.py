@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[40]:
+# In[17]:
 
 
 # Importing necessary libraries for data manipulation and visualization
@@ -14,13 +14,23 @@ import numpy as np
 import folium
 
 
-# In[41]:
+# In[18]:
 
 
-current_dir = os.path.dirname(os.path.abspath(__file__))
+import os
+import pandas as pd
 
-flights_csv_path = os.path.join(current_dir, "../data/flight_states.csv")
+# Example condition: only generate the path if the file does not already exist
+if not os.path.exists("../data/flight_states.csv"):
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    flights_csv_path = os.path.join(current_dir, "../data/flight_states.csv")
+else:
+    flights_csv_path = "../data/flight_states.csv"  # Use the relative path directly
 
+# Print the path to debug (optional)
+print(f"Using CSV file at: {flights_csv_path}")
+
+# Check if the file exists and then read it
 if os.path.exists(flights_csv_path):
     data_csv = pd.read_csv(flights_csv_path)
     f_sts_df = pd.DataFrame(data_csv)
@@ -28,13 +38,7 @@ else:
     raise FileNotFoundError(f"CSV file not found: {flights_csv_path}")
 
 
-# In[43]:
-
-
-f_sts_df.isna().sum()
-
-
-# In[44]:
+# In[19]:
 
 
 if (
@@ -49,37 +53,13 @@ else:
     pass
 
 
-# In[45]:
+# In[20]:
 
 
 f_sts_df = f_sts_df[f_sts_df.category > 0]
 
 
-# In[46]:
-
-
-f_sts_df.origin_country.value_counts()
-
-
-# In[47]:
-
-
-f_sts_df.callsign.value_counts()
-
-
-# In[48]:
-
-
-f_sts_df.icao24.value_counts()
-
-
-# In[49]:
-
-
-f_sts_df.sample(n=5)
-
-
-# In[50]:
+# In[21]:
 
 
 def get_us_flights():
@@ -88,7 +68,7 @@ def get_us_flights():
     return US_flights
 
 
-# In[53]:
+# In[22]:
 
 
 def get_craft_flights():
