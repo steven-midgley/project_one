@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d54438c03bfa520c6b8298d7f68ff27a {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_d54438c03bfa520c6b8298d7f68ff27a" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d54438c03bfa520c6b8298d7f68ff27a = L.map(
+                "map_d54438c03bfa520c6b8298d7f68ff27a",
+                {
+                    center: [33.9405, -118.4048],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 5,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_6615d5928a1ee238cb04bcb83411bcf6 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_6615d5928a1ee238cb04bcb83411bcf6.addTo(map_d54438c03bfa520c6b8298d7f68ff27a);
+        
+    
+            var marker_e6f16d0dcd9435cdfbdc11d4f7b33ac9 = L.marker(
+                [33.9405, -118.4048],
+                {}
+            ).addTo(map_d54438c03bfa520c6b8298d7f68ff27a);
+        
+    
+            var icon_165cd31731235f2535f4882ad8f22171 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bird", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_e6f16d0dcd9435cdfbdc11d4f7b33ac9.setIcon(icon_165cd31731235f2535f4882ad8f22171);
+        
+    
+        var popup_20803db379dd3b7dce93a79d94c7ff1f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_96a11b800ecc7a24af65c40cd0cdc427 = $(`<div id="html_96a11b800ecc7a24af65c40cd0cdc427" style="width: 100.0%; height: 100.0%;">Flight Path</div>`)[0];
+                popup_20803db379dd3b7dce93a79d94c7ff1f.setContent(html_96a11b800ecc7a24af65c40cd0cdc427);
+            
+        
+
+        marker_e6f16d0dcd9435cdfbdc11d4f7b33ac9.bindPopup(popup_20803db379dd3b7dce93a79d94c7ff1f)
+        ;
+
+        
+    
+    
+            marker_e6f16d0dcd9435cdfbdc11d4f7b33ac9.bindTooltip(
+                `<div>
+                     📝
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4a34af69ae4edd30e1b323d0d708fa10 = L.marker(
+                [26.5662, -80.9735],
+                {}
+            ).addTo(map_d54438c03bfa520c6b8298d7f68ff27a);
+        
+    
+            var icon_59a8da7a3d65f968b5ba49db19ef6bc3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bird", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_4a34af69ae4edd30e1b323d0d708fa10.setIcon(icon_59a8da7a3d65f968b5ba49db19ef6bc3);
+        
+    
+        var popup_d41851de5b535b0739931fe3d090a0b6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c18c9752c9970791c914acbfd4c0b8e3 = $(`<div id="html_c18c9752c9970791c914acbfd4c0b8e3" style="width: 100.0%; height: 100.0%;">Flight Path</div>`)[0];
+                popup_d41851de5b535b0739931fe3d090a0b6.setContent(html_c18c9752c9970791c914acbfd4c0b8e3);
+            
+        
+
+        marker_4a34af69ae4edd30e1b323d0d708fa10.bindPopup(popup_d41851de5b535b0739931fe3d090a0b6)
+        ;
+
+        
+    
+    
+            marker_4a34af69ae4edd30e1b323d0d708fa10.bindTooltip(
+                `<div>
+                     📝
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_09ca60524748e084182273f56aa621cf = L.marker(
+                [29.9511, -91.9876],
+                {}
+            ).addTo(map_d54438c03bfa520c6b8298d7f68ff27a);
+        
+    
+            var icon_90d01e3eacc536b74c2f500a752b24db = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bird", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_09ca60524748e084182273f56aa621cf.setIcon(icon_90d01e3eacc536b74c2f500a752b24db);
+        
+    
+        var popup_a2b6bc44db5abf04adf82fae81bbfe5d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5d443ff8fe3bbe7c5d21b872897f1984 = $(`<div id="html_5d443ff8fe3bbe7c5d21b872897f1984" style="width: 100.0%; height: 100.0%;">Flight Path</div>`)[0];
+                popup_a2b6bc44db5abf04adf82fae81bbfe5d.setContent(html_5d443ff8fe3bbe7c5d21b872897f1984);
+            
+        
+
+        marker_09ca60524748e084182273f56aa621cf.bindPopup(popup_a2b6bc44db5abf04adf82fae81bbfe5d)
+        ;
+
+        
+    
+    
+            marker_09ca60524748e084182273f56aa621cf.bindTooltip(
+                `<div>
+                     📝
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_47624e90075800dba9d44bc91016ea3c = L.marker(
+                [35.2937, -108.0026],
+                {}
+            ).addTo(map_d54438c03bfa520c6b8298d7f68ff27a);
+        
+    
+            var icon_147cf1954030fd832cf4222a44120042 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bird", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_47624e90075800dba9d44bc91016ea3c.setIcon(icon_147cf1954030fd832cf4222a44120042);
+        
+    
+        var popup_89eb35406dca2f307705a733d63821e9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_78b8762b994f6dbb0956683bc4dcd226 = $(`<div id="html_78b8762b994f6dbb0956683bc4dcd226" style="width: 100.0%; height: 100.0%;">Flight Path</div>`)[0];
+                popup_89eb35406dca2f307705a733d63821e9.setContent(html_78b8762b994f6dbb0956683bc4dcd226);
+            
+        
+
+        marker_47624e90075800dba9d44bc91016ea3c.bindPopup(popup_89eb35406dca2f307705a733d63821e9)
+        ;
+
+        
+    
+    
+            marker_47624e90075800dba9d44bc91016ea3c.bindTooltip(
+                `<div>
+                     📝
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c47fb346bbbfcf8abf422893f392471c = L.marker(
+                [37.5327, -119.0358],
+                {}
+            ).addTo(map_d54438c03bfa520c6b8298d7f68ff27a);
+        
+    
+            var icon_8448d68d961cdd568832bc8a44b6517a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bird", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_c47fb346bbbfcf8abf422893f392471c.setIcon(icon_8448d68d961cdd568832bc8a44b6517a);
+        
+    
+        var popup_dfad61cfb32cd7a36e9e88f50e16965d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_155f1f7720b4a0002e8dc3fdee3c3c42 = $(`<div id="html_155f1f7720b4a0002e8dc3fdee3c3c42" style="width: 100.0%; height: 100.0%;">Flight Path</div>`)[0];
+                popup_dfad61cfb32cd7a36e9e88f50e16965d.setContent(html_155f1f7720b4a0002e8dc3fdee3c3c42);
+            
+        
+
+        marker_c47fb346bbbfcf8abf422893f392471c.bindPopup(popup_dfad61cfb32cd7a36e9e88f50e16965d)
+        ;
+
+        
+    
+    
+            marker_c47fb346bbbfcf8abf422893f392471c.bindTooltip(
+                `<div>
+                     📝
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
