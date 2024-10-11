@@ -1,16 +1,42 @@
-# project_one
+# Project 1: Analyzing Flight Behavior Patterns
 
-**Flight Behavior Analysis**
+<div style="text-align: center;">
+    <img src="images/airplane.jpeg" alt="Airplane" width="500" />
+</div>
 
-![Airplane Image](images/airplane.jpg)
+---
+
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Objectives](#objectives)
+- [Data Sources](#data-sources)
+- [Quickstart Guide](#quickstart-guide)
+- [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+- [Results and Insights](#results-and-insights)
+- [Conclusion](#conclusion)
+- [How to Use](#how-to-use)
+- [References and Credits](#references-and-credits)
+- [Deployment Workflow](#deployment-workflow)
+- [Branch Discipline](#branch-discipline)
+- [Team Members](#team-members)
+- [Acknowledgments](#acknowledgments)
+
+---
 
 ## Project Overview
 
-Add info here... (Describe the purpose of the project, the data you're using, and the goals you want to achieve.)
+This project is part of an AI boot camp that focuses on advanced data analysis. We explore and analyze flight behavior patterns using datasets from Kaggle and the OpenSky API. Our objective is to uncover significant patterns and correlations in the data that could potentially assist airlines and stakeholders in making informed decisions.
+
+Through this analysis, we aim to develop insights that highlight trends and anomalies in flight behavior, providing valuable information for optimizing operations, enhancing safety protocols, and improving customer satisfaction. This project serves as a practical application of our data analysis skills, demonstrating the techniques and methodologies we have learned throughout the AI boot camp.
+
+---
 
 ## Objectives
 
 - Add info here ... (Include measurable goals like predicting flight delays, identifying delay trends, etc.)
+
+---
 
 ## Data Sources 
 
@@ -35,6 +61,7 @@ The dataset from Kaggle includes historical flight data with over 1 million reco
 - [OpenSky API](https://github.com/openskynetwork/opensky-api)
 The OpenSky API provides real-time flight tracking. This data can be used to compare with historical data to enhance predictions or validate findings.
 
+---
 
 ## Quickstart Guide
 
@@ -82,7 +109,11 @@ The OpenSky API provides real-time flight tracking. This data can be used to com
 
 - If you encounter issues with `python3`, use `python`.
 
+---
+
 ## Exploratory Data Analysis (EDA)
+
+In this section, we present statistical summaries and visualizations derived from the flight behavior data. These insights help us understand key performance indicators related to flight operations.
 
 ### Key Insights from Flight Data
 - Add info here... (Summarize the key insights and trends found during your data exploration, such as peak delay times or busiest airports.)
@@ -99,9 +130,13 @@ Explanation:
 
 - **Recommendation:** Add info here.... (Offer any recommendations based on your analysis.)
 
+---
+
 ## Results and Insights
 
 - Add info here.... (Describe the results you obtained, highlighting any important findings related to flight delays or predictions.) 
+
+---
 
 ## Conclusion
 
@@ -109,6 +144,8 @@ Add info here... (Summarize the overall findings and the value of the analysis.)
 
 ### Future Work:
 - Add info here... (List any areas for improvement or further analysis, such as incorporating weather data or expanding the dataset.) 
+
+---
 
 ## How to Use
 
@@ -121,6 +158,8 @@ Add info here... (Summarize the overall findings and the value of the analysis.)
 - [Matplotlib Documentation](https://matplotlib.org/)
 - [OpenSky Network API](https://openskynetwork.github.io/opensky-api/)
 - [Kaggle Dataset](https://www.kaggle.com/datasets/mahoora00135/flights)
+
+---
 
 ## Deployment Workflow
 
@@ -149,6 +188,7 @@ Add info here... (Summarize the overall findings and the value of the analysis.)
      ```bash
      git push --set-upstream origin <branch-name>
      ```
+---
 
 ## Branch Discipline
 
@@ -156,6 +196,24 @@ Add info here... (Summarize the overall findings and the value of the analysis.)
 - **Testing Branch:** `stage` – All code contributions are merged into `stage` .
 - Once `stage` is stable and conflict-free, it will be merged into `main`.
 
-## License
+--- 
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## Team Members
+
+- **Steven Midgley**
+- **Dane Larsen**
+- **Leslie Barrera Dorantes**
+
+--- 
+
+## Acknowledgments
+
+We would like to express our sincere gratitude to the following individuals and organizations for their invaluable contributions to this project:
+
+- **Firas Obeid**: For providing guidance and support throughout the project.
+- **Kaggle**: For the dataset that served as a foundation for our analysis.
+- **OpenSky API**: For providing essential data to enhance our understanding of flight behavior.
+
+Additionally, we appreciate the collaborative environment fostered by our AI boot camp, which enabled us to work together effectively and learn from each other.
+
+Thank you to everyone who has contributed to this project’s success! 
