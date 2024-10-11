@@ -1,21 +1,21 @@
 {
 	"workbench.colorCustomizations": {
-		"editorGroup.border": "#a1df53",
-		"panel.border": "#a1df53",
-		"sash.hoverBorder": "#a1df53",
-		"sideBar.border": "#a1df53",
-		"statusBar.background": "#89d728",
-		"statusBar.border": "#89d728",
-		"statusBar.debuggingBackground": "#7628d7",
-		"statusBar.debuggingBorder": "#7628d7",
-		"statusBar.debuggingForeground": "#e7e7e7",
+		"editorGroup.border": "#f798e6",
+		"panel.border": "#f798e6",
+		"sash.hoverBorder": "#f798e6",
+		"sideBar.border": "#f798e6",
+		"statusBar.background": "#f468db",
+		"statusBar.border": "#f468db",
+		"statusBar.debuggingBackground": "#68f481",
+		"statusBar.debuggingBorder": "#68f481",
+		"statusBar.debuggingForeground": "#15202b",
 		"statusBar.foreground": "#15202b",
-		"statusBarItem.hoverBackground": "#6eac20",
-		"statusBarItem.remoteBackground": "#89d728",
+		"statusBarItem.hoverBackground": "#f138d0",
+		"statusBarItem.remoteBackground": "#f468db",
 		"statusBarItem.remoteForeground": "#15202b",
-		"tab.activeBorder": "#a1df53"
+		"tab.activeBorder": "#f798e6"
 	},
-	"peacock.color": "#89d728",
+	"peacock.color": "#f468db",
 	"python.analysis.inlayHints.functionReturnTypes": true,
 	"python.globalModuleInstallation": true,
 	"pylint.lintOnChange": true,
@@ -76,5 +76,9 @@
 	"terminal.integrated.gpuAcceleration": "on",
 	"[ini]": {
 		"editor.defaultFormatter": "lkrms.inifmt"
-	}
+	},
+	"python.analysis.extraPaths": [
+		"./notebooks/converted_notebooks_scripts",
+		"./notebooks/scripts"
+	]
 }
