@@ -1,4 +1,4 @@
-src/python3/python
+# src/python3/python
 kaggle
 pandas
 matplotlib
