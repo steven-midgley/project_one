@@ -76,5 +76,9 @@
 	"terminal.integrated.gpuAcceleration": "on",
 	"[ini]": {
 		"editor.defaultFormatter": "lkrms.inifmt"
-	}
+	},
+	"python.analysis.extraPaths": [
+		"./notebooks/converted_notebooks_scripts",
+		"./notebooks/scripts"
+	]
 }
