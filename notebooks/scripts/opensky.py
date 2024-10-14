@@ -41,7 +41,7 @@ def get_states(api):
 
     df = pd.DataFrame(states_data)
 
-    df.to_csv("data/flight_states.csv", mode="w", header=True, index=False)
+    df.to_csv("data/flight_states.csv", mode="w", header=True, index="icao24")
     print()
 
     pass
