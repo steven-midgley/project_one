@@ -29,14 +29,16 @@ craft_categories = {
 
 def map_flights(df):
 
-    map = folium.Map(
-        zoom_start=4,
-        tiles=folium.TileLayer(no_wrap=True),
-    )
     feature_groups = {}
 
     for index, row in df.iterrows():
         if pd.notna(row["longitude"]) and pd.notna(row["latitude"]):
+            map = folium.Map(
+                location=(row[0]["longitude"], row[0]["latitude"]),
+                zoom_control=True,
+                zoom_start=4,
+                tiles=folium.TileLayer(no_wrap=True),
+            )
             category = row["category"]
 
             if category not in craft_categories:
@@ -58,6 +60,7 @@ def map_flights(df):
                 popup=popup_html,
                 icon=folium.Icon(icon="plane", color=color, description=description),
             ).add_to(feature_groups[category])
+
     for feature in feature_groups.values():
         feature.add_to(map)
 
