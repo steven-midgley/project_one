@@ -198,8 +198,29 @@ Add info here... (Summarize the overall findings and the value of the analysis.)
 ## How to Use
 
 1. **Download Flight Data:** The dataset is available in the `data/` folder. You can also download the latest data from Kaggle as mentioned in the [Quickstart Guide](#quickstart-guide).
-2. **Run the Jupyter Notebook:** Navigate to the `notebooks/` folder and open `flight_analysis.ipynb`. The notebook includes all code and explanations for the data analysis and machine learning models.
-3. **View Visualizations:** All visualizations are saved in the `images/` folder.
+
+2. **Run the Jupyter Notebook:** Navigate to the `notebooks/` folder and open `flight_analysis.ipynb`. The notebook includes all code and explanations for the data analysis.
+
+3. Run the Interactive Map: Use the command below to start a local server and view the interactive map:
+     ```bash
+     python3 -m http.server
+     ```
+     - Then, access the map via http://localhost:8000/maps_html/.
+     - **View the Deployed Web App:** Visit the deployed version of the project, including the interactive map, at:
+          - **DigitalOcean Droplet URL:** http://143.198.183.206/
+
+5. **View Visualizations:** All visualizations generated from the analysis are saved in the `images/` folder. You can review these to explore key trends insights from the data. 
+
+6. **Explore Additional Datasets:** If you want to work with other data sets, place them in the `data/` folder and modify the correspinding parts of the notebook and scripts to analyze the new data. 
+
+7. **Modify and Run the Scripts:** You can also modify the Python scripts and re-run them using the command:
+     ```bash
+     python <script_name.py>
+     ```
+     - For example, to re-run a mao generation script: 
+     ``` bash
+     python notebooks/scripts/ipynb_script_converter.py
+     ```
 
 ## References and Credits
 - [Pandas Documentation](https://pandas.pydata.org/)
