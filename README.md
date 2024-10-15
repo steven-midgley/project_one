@@ -140,17 +140,69 @@ In this section, we present statistical summaries and visualizations derived fro
 - **Time-Based Delays:** Flights scheduled during late-night hours (12 AM to 3 AM) and afternoon peak times (5 PM to 7 PM) were more likely to be delayed.
 - **Correlation Findings:** Distance and flight time showed weak correlations with delays, indicating that other factors (such as weather or operational inefficiencies) are likely contributing to delays.
 
-### Sample Visualizations
+## Visualizations
 
-#### Visualization 1 
-![XXXXXX](images/XXXX.png)
-Explanation:
+### Visualization 1: **Arrival Delay Distribution**
+![Arrival Delay Distribution](images/arrival_delay_distribution.png)
 
-#### Visualization 2 
-![XXXXXX](images/XXXX.png)
-Explanation:
+**Explanation**: This histogram visualizes the distribution of arrival delays. The majority of flights experience delays ranging from 0 to 10 minutes. However, the right skew shows that there are some extreme outliers with significant delays, though they are less frequent.
 
-- **Recommendation:** Add info here.... (Offer any recommendations based on your analysis.)
+---
+
+### Visualization 2: **Average Delays by Airline**
+![Average Delays by Airline](images/average_delays_by_airline.png)
+
+**Explanation**: This bar chart shows the average delay times for each airline. Airlines like Frontier and AirTran tend to have longer delays on average, while Alaska Airlines stands out with consistently shorter delays. These differences suggest potential operational inefficiencies in certain airlines.
+
+---
+
+### Visualization 3: **Delays by Origin Airport**
+![Delays by Origin Airport](images/delays_by_origin_airport.png)
+
+**Explanation**: This bar chart analyzes delays based on the originating airport. Newark Liberty International Airport (EWR) has the longest delays, while smaller airports tend to have shorter delays. This could be due to larger airports dealing with more air traffic and congestion.
+
+---
+
+### Visualization 4: **Delays by Destination Airport**
+![Delays by Destination Airport](images/delays_by_destination_airport.png)
+
+**Explanation**: Similar to origin airports, this chart highlights destination airports with significant delays. Newark (EWR) once again stands out as one of the most delay-prone airports. This indicates that both departure and arrival at busy airports can contribute to flight delays.
+
+---
+
+### Visualization 5: **Correlation Between Delays and Other Variables (Heatmap)**
+![Correlation Heatmap](images/correlation_heatmap.png)
+
+**Explanation**: This heatmap shows the correlation between various flight characteristics (such as distance, flight time, and delays). While there is a weak positive correlation between flight distance and delays, other variables like flight time show minimal correlation with delay times.
+
+---
+
+### Visualization 6: **Delays by Hour of the Day**
+![Delays by Hour](images/delays_by_hour.png)
+
+**Explanation**: This time-series chart shows how delays vary throughout the day. Early morning flights have the fewest delays, while late afternoon and night flights tend to face higher delays. This suggests that congestion builds up over the course of the day, leading to more delays later on.
+
+---
+
+### Visualization 7: **Delays by Day of the Week**
+![Delays by Day](images/delays_by_day.png)
+
+**Explanation**: This bar chart reveals how delays differ across the days of the week. Thursday experiences the highest delays, possibly due to higher traffic volume, while weekends tend to have fewer delays overall.
+
+
+- **Recommendation:** 
+
+1. **Operational Improvements for Airlines**: 
+   - Airlines with consistently high delays, such as Frontier and AirTran Airways, should consider reviewing their scheduling and resource allocation strategies to reduce delays. Improving staff scheduling and aircraft turnaround times may help alleviate delays.
+
+2. **Airport Congestion Management**:
+   - Newark Liberty International Airport (EWR) faces significant delays. Airport management should consider implementing congestion management strategies, such as optimizing runway schedules or improving coordination between airlines to reduce bottlenecks.
+
+3. **Focus on Late-Night Flights**:
+   - Given that late-night flights experience higher delays, airlines and airports should allocate additional resources during these peak periods to handle potential issues before they escalate.
+
+4. **Increased Resources During Busy Travel Days**:
+   - Since Thursdays consistently show higher delays, airports should consider increasing staffing or resources during peak travel days to handle higher traffic volumes and minimize delays.
 
 ---
 
@@ -179,10 +231,15 @@ The project includes an interactive map that dynamically displays flight paths a
 5. **Automation:**
 - A script automatically converts Jupyter notebooks (.ipynb) to Python scripts (.py), allowing for seamless integration with the Flask app. The script can be found at notebooks/scripts/ipynb_script_converter.py.
 
+---
 
 ## Results and Insights
 
-- Add info here.... (Describe the results you obtained, highlighting any important findings related to flight delays or predictions.) 
+- **Overall Delay Trends**: The majority of flights experience minimal delays, though extreme delays (outliers) can heavily influence the average delay time.
+- **Airline Performance**: Airlines such as Frontier and AirTran Airways show consistently higher delays, while Alaska Airlines performs better with significantly fewer delays.
+- **Airport Efficiency**: Larger airports like Newark Liberty International (EWR) experience the most delays, while smaller regional airports tend to perform better.
+- **Time-Based Delays**: Early morning flights are generally on time, while late-night flights and weekday flights (especially Thursdays) face higher delays.
+- **Correlation Analysis**: Weak correlations between delays and variables such as flight distance and air time suggest that other factors (e.g., operational inefficiencies or weather conditions) are more likely contributors to delays.
 
 ---
 
