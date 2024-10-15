@@ -30,6 +30,7 @@ craft_categories = {
 def map_flights(df):
 
     map = folium.Map(
+        zoom_start=4,
         tiles=folium.TileLayer(no_wrap=True),
     )
     feature_groups = {}

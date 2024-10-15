@@ -1,6 +1,7 @@
 import os
-from datetime import datetime, timezone
 import pandas as pd
+from datetime import datetime, timezone
+from opensky_api import OpenSkyApi
 
 
 def get_states(api):
@@ -39,7 +40,7 @@ def get_states(api):
     states_data = pd.DataFrame(states_data)
     states_data = states_data[states_data.category > 0]
     states_data = states_data.dropna(how="any")
-    states_data.to_csv("data/flight_states.csv", mode="w", header=True, index="icao24")
+    states_data.to_csv("data/flight_states.csv", mode="w", header=True, index=False)
     return states_data
 
 
@@ -77,7 +78,7 @@ def get_arrivals(api, airport, begin, end):
         )
 
     df = pd.DataFrame(arrival_data)
-    df.to_csv("data/arrivals.csv", mode="w", header=True, index="icao24")
+    df.to_csv("data/arrivals.csv", mode="w", header=True, index=False)
 
     pass
 
@@ -115,7 +116,7 @@ def get_departures(api, airport, begin, end):
         )
 
     df = pd.DataFrame(departure_data)
-    df.to_csv("data/departures.csv", mode="w", header=True, index="icao24")
+    df.to_csv("data/departures.csv", mode="w", header=True, index=False)
 
     pass
 
@@ -169,3 +170,8 @@ def save_to_csv(df, file_path):
     else:
         df.to_csv(file_path, mode="a", header=False, index=False)
         print(f"Saved: {file_path}")
+
+
+if __name__ == "__main__":
+    api = OpenSkyApi()
+    get_states(api)
