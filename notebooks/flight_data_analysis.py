@@ -22,15 +22,12 @@
 # In[117]:
 
 
-# Import necessary libraries
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Set up Seaborn theme for better plots
 sns.set_theme()
 
-# Dictionary of file paths
 csv_files = {
     "flight_states.csv": "../data/flight_states.csv",
     "test_arrivals.csv": "../data/test_arrivals.csv",
@@ -41,10 +38,8 @@ csv_files = {
     "test_flight_states.csv": "../data/test_flight_states.csv",
 }
 
-# Dictionary to store DataFrames
 dataframes = {}
 
-# Load each CSV file
 for file_name, file_path in csv_files.items():
     try:
         dataframes[file_name] = pd.read_csv(file_path)
@@ -56,7 +51,6 @@ for file_name, file_path in csv_files.items():
 # In[118]:
 
 
-# Example: Access the 'flights.csv' DataFrame
 flights_df = dataframes["flights.csv"]
 
 
@@ -77,7 +71,6 @@ plt.xlabel("Arrival Delay (minutes)", fontsize=12)
 plt.ylabel("Number of Flights", fontsize=12)
 plt.grid(True)
 
-# Show the plot
 plt.show()
 
 
@@ -104,12 +97,10 @@ plt.show()
 # In[121]:
 
 
-# Group the data by airline and calculate the average arrival delay
 airline_delay = (
     flights_df.groupby("name")["arr_delay"].mean().sort_values(ascending=False)
 )
 
-# Plot the average delay per airline without using the palette argument
 plt.figure(figsize=(12, 6))
 sns.barplot(x=airline_delay.index, y=airline_delay.values)
 plt.title("Average Arrival Delay by Airline", fontsize=15)
@@ -118,7 +109,6 @@ plt.ylabel("Average Arrival Delay (minutes)", fontsize=12)
 plt.xticks(rotation=90)
 plt.grid(True)
 
-# Show the plot
 plt.show()
 
 
@@ -149,12 +139,10 @@ plt.show()
 # In[122]:
 
 
-# Group the data by origin airport and calculate the average arrival delay
 origin_delay = (
     flights_df.groupby("origin")["arr_delay"].mean().sort_values(ascending=False)
 )
 
-# Plot the average delay per origin airport
 plt.figure(figsize=(12, 6))
 sns.barplot(x=origin_delay.index, y=origin_delay.values)
 plt.title("Average Arrival Delay by Origin Airport", fontsize=15)
@@ -163,7 +151,6 @@ plt.ylabel("Average Arrival Delay (minutes)", fontsize=12)
 plt.xticks(rotation=90)
 plt.grid(True)
 
-# Show the plot
 plt.show()
 
 # Key Findings (in markdown format):
@@ -196,12 +183,10 @@ plt.show()
 # In[123]:
 
 
-# Group the data by destination airport and calculate the average arrival delay
 destination_delay = (
     flights_df.groupby("dest")["arr_delay"].mean().sort_values(ascending=False)
 )
 
-# Plot the average delay per destination airport
 plt.figure(figsize=(12, 6))
 sns.barplot(x=destination_delay.index, y=destination_delay.values)
 plt.title("Average Arrival Delay by Destination Airport", fontsize=15)
@@ -210,7 +195,6 @@ plt.ylabel("Average Arrival Delay (minutes)", fontsize=12)
 plt.xticks(rotation=90)
 plt.grid(True)
 
-# Show the plot
 plt.show()
 
 
@@ -239,15 +223,12 @@ plt.show()
 # In[124]:
 
 
-# Select relevant columns for correlation analysis
 correlation_df = flights_df[
     ["arr_delay", "distance", "air_time", "sched_arr_time"]
 ].dropna()
 
-# Calculate the correlation matrix
 correlation_matrix = correlation_df.corr()
 
-# Plot the heatmap for correlation
 plt.figure(figsize=(10, 6))
 sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm", fmt=".2f")
 plt.title("Correlation Heatmap of Delays and Other Variables", fontsize=15)
@@ -287,13 +268,10 @@ plt.show()
 # In[125]:
 
 
-# Extract the hour from the scheduled arrival time
-flights_df["sched_arr_hour"] = flights_df["sched_arr_time"] // 100  # Convert to hours
+flights_df["sched_arr_hour"] = flights_df["sched_arr_time"] // 100  
 
-# Group by hour and calculate the average delay
 hourly_delay = flights_df.groupby("sched_arr_hour")["arr_delay"].mean().sort_index()
 
-# Plot the average delay by hour of the day
 plt.figure(figsize=(10, 6))
 sns.lineplot(x=hourly_delay.index, y=hourly_delay.values)
 plt.title("Average Arrival Delay by Hour of the Day", fontsize=15)
@@ -301,7 +279,6 @@ plt.xlabel("Scheduled Arrival Hour", fontsize=12)
 plt.ylabel("Average Arrival Delay (minutes)", fontsize=12)
 plt.grid(True)
 
-# Show the plot
 plt.show()
 
 
@@ -329,13 +306,11 @@ plt.show()
 # In[126]:
 
 
-# Create a 'day of week' column from the 'time_hour' column
 flights_df["time_hour"] = pd.to_datetime(
     flights_df["time_hour"]
-)  # Ensure time_hour is datetime
+)  
 flights_df["day_of_week"] = flights_df["time_hour"].dt.day_name()
 
-# Group by day of the week and calculate the average delay
 weekly_delay = (
     flights_df.groupby("day_of_week")["arr_delay"]
     .mean()
@@ -344,7 +319,6 @@ weekly_delay = (
     )
 )
 
-# Plot the average delay by day of the week
 plt.figure(figsize=(10, 6))
 sns.barplot(x=weekly_delay.index, y=weekly_delay.values)
 plt.title("Average Arrival Delay by Day of the Week", fontsize=15)
@@ -352,7 +326,6 @@ plt.xlabel("Day of the Week", fontsize=12)
 plt.ylabel("Average Arrival Delay (minutes)", fontsize=12)
 plt.grid(True)
 
-# Show the plot
 plt.show()
 
 

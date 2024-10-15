@@ -4,13 +4,10 @@
 # In[1]:
 
 
-# Importing Libraries
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-# something needed for heat maps..... 🤔
 import seaborn as sns
 import missingno as msno
 
@@ -21,14 +18,12 @@ import missingno as msno
 # Suppress Warning DO NOT LEAVE THIS ON ALL THE TIME CAN MUTE ERRORS!!
 import warnings
 
-# Suppress specific warnings
 warnings.simplefilter(action="ignore", category=UserWarning)
 
 
 # In[ ]:
 
 
-# Read csv and create DataFrame
 data_csv = pd.read_csv("../data/flights.csv")
 df = pd.DataFrame(data_csv).set_index("id")
 
@@ -36,7 +31,6 @@ df = pd.DataFrame(data_csv).set_index("id")
 # In[ ]:
 
 
-# Create column descriptions
 """
   
 """
@@ -64,7 +58,6 @@ columns_legend = {
     "name": "Full name of the airline carrier",
 }
 
-# Display legend as dataframe
 df_cl = pd.DataFrame(
     list(columns_legend.items()), columns=["Column Name", "Description"]
 )
@@ -75,7 +68,6 @@ df_cl
 # In[5]:
 
 
-# Give columns_legend to df as attributes
 df.attrs = columns_legend
 
 
@@ -94,7 +86,6 @@ df.attrs = columns_legend
 # In[ ]:
 
 
-# Examine df
 df.attrs
 
 
@@ -216,11 +207,10 @@ df[
 
 dfc = df.copy()
 
-# clean & normalize time columns
-dfc.dep_time = dfc.dep_time.astype(int)  # whole int for minutes
+dfc.dep_time = dfc.dep_time.astype(int) 
 dfc.dep_time = dfc.dep_time.astype(str).str.zfill(
     4
-)  # zfill(4) is to ensure that all timestamps have 4 digits
+)  
 
 dfc.sched_dep_time = dfc.sched_dep_time.astype(str).str.zfill(4)
 
@@ -235,7 +225,6 @@ dfc.arr_delay = dfc.arr_delay.astype(int)
 
 dfc.air_time = dfc.air_time.astype(int)
 
-# Convert columns to datetime
 dfc.dep_time = pd.to_datetime(dfc.dep_time, format="%H%M%S").dt.strftime("%H:%M:%S")
 
 dfc.sched_dep_time = pd.to_datetime(dfc.sched_dep_time, format="%H%M%S").dt.strftime(
@@ -247,12 +236,11 @@ dfc.sched_arr_time = pd.to_datetime(dfc.sched_arr_time, format="%H%M%S").dt.strf
     "%H:%M:%S"
 )
 
-# Create minutes columns
 dfc.insert(
     4,
     "dt_min",
     pd.to_datetime(dfc.dep_time).dt.hour * 60 + pd.to_datetime(dfc.dep_time).dt.minute,
-)  # this is to keep the original str formate in the dfc.dep_time column
+)  
 
 dfc.insert(
     6,
@@ -265,8 +253,7 @@ dfc.insert(
     8,
     "rt_min",
     pd.to_datetime(dfc.arr_time).dt.hour * 60 + pd.to_datetime(dfc.arr_time).dt.minute,
-)  # this is to keep the original str formate in the dfc.dep_time column
-
+)  
 dfc.insert(
     10,
     "srt_min",
