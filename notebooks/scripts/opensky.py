@@ -207,10 +207,3 @@ def save_to_csv(df, file_path):
     else:
         df.to_csv(file_path, mode="a", header=False, index=False)
         print(f"Saved: {file_path}")
-
-
-if __name__ == "__main__":
-
-    api = OpenSkyApi()
-
-    get_states(api)
