@@ -8,11 +8,15 @@
 
 ## Table of Contents
 
+## Table of Contents
+
 - [Project Overview](#project-overview)
 - [Objectives](#objectives)
 - [Data Sources](#data-sources)
 - [Quickstart Guide](#quickstart-guide)
+- [Tech Stack Setup](#tech-stack-setup)
 - [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+- [Interactive Map Features](#interactive-map-features)
 - [Results and Insights](#results-and-insights)
 - [Conclusion](#conclusion)
 - [How to Use](#how-to-use)
@@ -25,6 +29,13 @@
 ---
 
 ## Project Overview
+
+## Project Overview
+
+This project is part of an AI boot camp that focuses on advanced data analysis. We explore and analyze flight behavior patterns, with a primary focus on uncovering trends related to flight delays. Using datasets from Kaggle and the OpenSky API, our objective is to identify significant patterns and correlations that can help airlines and stakeholders make informed decisions.
+
+Through this analysis, we develop insights that highlight trends and anomalies in flight behavior, such as delays by airlines, airports, and time of day. This project serves as a practical application of our data analysis skills, demonstrating the techniques and methodologies we have learned throughout the AI boot camp.
+
 
 This project is part of an AI boot camp that focuses on advanced data analysis. We explore and analyze flight behavior patterns using datasets from Kaggle and the OpenSky API. Our objective is to uncover significant patterns and correlations in the data that could potentially assist airlines and stakeholders in making informed decisions.
 
