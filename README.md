@@ -368,7 +368,16 @@ We would like to express our sincere gratitude to the following individuals and 
 - **Firas Obeid**: For providing guidance and support throughout the project.
 - **Kaggle**: For the dataset that served as a foundation for our analysis.
 - **OpenSky API**: For providing essential data to enhance our understanding of flight behavior.
+- **Team Members**: Special thanks to **Steven Midgley**, **Dane Larsen**, and **Leslie Barrera Dorantes** for their dedicated work and collaboration throughout the project.
+- **AI Boot Camp Instructors**: For their support, feedback, and encouragement during the course of the project.
 
-Additionally, we appreciate the collaborative environment fostered by our AI boot camp, which enabled us to work together effectively and learn from each other.
+Additionally, we would like to acknowledge the use of key open-source tools and libraries, including:
+- **Flask**
+- **Folium**
+- **Pandas**
+- **Matplotlib**
+- **Pyodide**
 
-Thank you to everyone who has contributed to this project’s success! 
+We appreciate the collaborative environment fostered by our AI boot camp, which enabled us to work together effectively and learn from each other.
+
+Thank you to everyone who has contributed to this project’s success!
