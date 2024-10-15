@@ -126,6 +126,8 @@ This project utilizes a dynamic tech stack to run the web application and genera
 - **DigitalOcean Droplet:** Our deployment platform, providing a serverless experience for running the Python project.
 - **Gunicorn:** A WSGI HTTP server used to serve the Flask application in production.
 
+---
+
 ## Exploratory Data Analysis (EDA)
 
 In this section, we present statistical summaries and visualizations derived from the flight behavior data. These insights help us understand key performance indicators related to flight operations.
@@ -145,48 +147,35 @@ In this section, we present statistical summaries and visualizations derived fro
 
 **Explanation**: This histogram visualizes the distribution of arrival delays. The majority of flights experience delays ranging from 0 to 10 minutes. However, the right skew shows that there are some extreme outliers with significant delays, though they are less frequent.
 
----
-
 ### Visualization 2: **Average Delays by Airline**
 ![Average Delays by Airline](images/average_delays_by_airline.png)
 
 **Explanation**: This bar chart shows the average delay times for each airline. Airlines like Frontier and AirTran tend to have longer delays on average, while Alaska Airlines stands out with consistently shorter delays. These differences suggest potential operational inefficiencies in certain airlines.
-
----
 
 ### Visualization 3: **Delays by Origin Airport**
 ![Delays by Origin Airport](images/delays_by_origin_airport.png)
 
 **Explanation**: This bar chart analyzes delays based on the originating airport. Newark Liberty International Airport (EWR) has the longest delays, while smaller airports tend to have shorter delays. This could be due to larger airports dealing with more air traffic and congestion.
 
----
-
 ### Visualization 4: **Delays by Destination Airport**
 ![Delays by Destination Airport](images/delays_by_destination_airport.png)
 
 **Explanation**: Similar to origin airports, this chart highlights destination airports with significant delays. Newark (EWR) once again stands out as one of the most delay-prone airports. This indicates that both departure and arrival at busy airports can contribute to flight delays.
-
----
 
 ### Visualization 5: **Correlation Between Delays and Other Variables (Heatmap)**
 ![Correlation Heatmap](images/correlation_heatmap.png)
 
 **Explanation**: This heatmap shows the correlation between various flight characteristics (such as distance, flight time, and delays). While there is a weak positive correlation between flight distance and delays, other variables like flight time show minimal correlation with delay times.
 
----
-
 ### Visualization 6: **Delays by Hour of the Day**
 ![Delays by Hour](images/delays_by_hour.png)
 
 **Explanation**: This time-series chart shows how delays vary throughout the day. Early morning flights have the fewest delays, while late afternoon and night flights tend to face higher delays. This suggests that congestion builds up over the course of the day, leading to more delays later on.
 
----
-
 ### Visualization 7: **Delays by Day of the Week**
 ![Delays by Day](images/delays_by_day.png)
 
 **Explanation**: This bar chart reveals how delays differ across the days of the week. Thursday experiences the highest delays, possibly due to higher traffic volume, while weekends tend to have fewer delays overall.
-
 
 - **Recommendation:** 
 
@@ -281,6 +270,7 @@ Further research could incorporate external factors, such as weather conditions 
      ``` bash
      python notebooks/scripts/ipynb_script_converter.py
      ```
+---
 
 ## References and Credits
 
@@ -330,7 +320,6 @@ Further research could incorporate external factors, such as weather conditions 
      ```bash
      git push --set-upstream origin <branch-name>
      ```
-
 ---
 
 ### 2. **Merging Branches**
@@ -397,6 +386,8 @@ Further research could incorporate external factors, such as weather conditions 
      pip install -r requirements.txt
      ```
 
+---
+
 ## Branch Discipline
 
 - **Protected Branch:** `main` – Managed by the project manager. No direct pushes are allowed to `main`. All code merged into `main` should be thoroughly tested and approved.
@@ -411,6 +402,7 @@ Further research could incorporate external factors, such as weather conditions 
 - **Pull Requests:** Code should be merged into stage or main through pull requests (PRs). PRs should include clear descriptions of the changes and any testing that has been done. Team members should review and approve the PR before it is merged.
 
 - **Code Review Process:** Before merging into stage or main, the code should go through a review process to ensure it meets quality standards, contains proper documentation, and does not introduce any conflicts or issues.
+
 --- 
 
 ## Team Members
