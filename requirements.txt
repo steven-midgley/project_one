@@ -1,4 +1,4 @@
-# src/python3/python
+git+https://github.com/openskynetwork/opensky-api.git@master#subdirectory=python
 kaggle
 pandas
 matplotlib
