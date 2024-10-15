@@ -17,8 +17,3 @@ pip freeze
 
 echo "Running application..."
 gunicorn -w 3 -b 0.0.0.0:80 app:app
-
-
-echo "Attempting to run ./setuo.sh"
-./setup.sh
-echo "Deployment complete"
