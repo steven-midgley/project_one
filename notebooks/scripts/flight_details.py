@@ -3,30 +3,8 @@ from opensky_api import OpenSkyApi
 from notebooks.scripts.opensky import get_flight_details
 
 
-def flight_details(icao24):
+def flight_details(icao24, color):
     data = get_flight_details(OpenSkyApi(), icao24)
-    print(data)
-    poly_colors = [
-        "green",
-        "blue",
-        "purple",
-        "orange",
-        "red",
-        "darkgreen",
-        "darkred",
-        "lightblue",
-        "lightgreen",
-        "pink",
-        "beige",
-        "lightred",
-        "gray",
-        "black",
-        "cadetblue",
-        "lightgray",
-        "darkblue",
-        "darkpurple",
-        "white",
-    ]
 
     origin_lat = data.path[0][1]
     origin_lon = data.path[0][2]
@@ -34,7 +12,7 @@ def flight_details(icao24):
 
     map = folium.Map(
         location=[origin_lat, origin_lon],
-        zoom_start=4,
+        zoom_start=6,
         tiles=folium.TileLayer(no_wrap=True),
     )
 
@@ -42,14 +20,12 @@ def flight_details(icao24):
         location=[origin_lat, origin_lon],
         tooltip="📝",
         popup="Flight Path",
-        icon=folium.Icon(
-            icon="plane", color=poly_colors[way_points % len(poly_colors)]
-        ),
+        icon=folium.Icon(icon="plane", color=color),
     ).add_to(map)
 
     folium.PolyLine(
         locations=way_points,
-        color=poly_colors[way_points % len(poly_colors)],
+        color=color,
         weight=2.5,
         opacity=1,
     ).add_to(map)

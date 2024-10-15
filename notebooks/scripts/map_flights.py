@@ -47,7 +47,7 @@ def map_flights(df):
             else:
                 description, color = list(craft_categories[category].items())[0]
 
-            popup_html = call_to_action(row)
+            popup_html = call_to_action(row, color)
 
             if category not in feature_groups:
                 feature_groups[category] = folium.FeatureGroup(
@@ -67,10 +67,10 @@ def map_flights(df):
     return map._repr_html_()
 
 
-def call_to_action(row):
+def call_to_action(row, color):
     return f"""
             <div>
                 <p><strong>Flight:</strong> {row['callsign']}</p>
-                <a href='/crafy-details/{row['icao24']}'>View details</a>
+                <a href='/flight_path/{row['icao24']}/{color}'>See Flight Path</a>
             </div>
             """

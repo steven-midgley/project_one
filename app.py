@@ -18,10 +18,9 @@ def all_crafts():
     return render_template("index.html", map_html=map_html)
 
 
-@app.route("/crafy-details/<icao24>")
-def craft_details(icao24):
-    print(icao24)
-    map_html = flight_details(icao24)
+@app.route("/flight_path/<icao24>/<color>")
+def craft_details(icao24, color):
+    map_html = flight_details(icao24, color)
     return render_template("index.html", map_html=map_html)
 
 
