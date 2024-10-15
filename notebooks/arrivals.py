@@ -4,7 +4,7 @@
 # In[1]:
 
 
-# Importing necessary libraries for data manipulation and visualization
+# Importing necessary libraries 
 import sys
 import os
 
@@ -89,8 +89,6 @@ arv_df[["dist_frm_orig_v", "dist_frm_orig_h"]].plot()
 
 arv_df.sample(n=5)
 
-
-# 
 
 # In[ ]:
 
