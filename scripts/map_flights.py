@@ -28,10 +28,8 @@ craft_categories = {
 
 
 def map_flights(df):
+
     map = folium.Map(
-        location=(0, 0),
-        zoom_control=True,
-        zoom_start=3,
         tiles=folium.TileLayer(no_wrap=True),
     )
     feature_groups = {}
@@ -46,7 +44,7 @@ def map_flights(df):
             else:
                 description, color = list(craft_categories[category].items())[0]
 
-            popup_html = call_to_action(row, color)
+            popup_html = call_to_action(row, color, description)
 
             if category not in feature_groups:
                 feature_groups[category] = folium.FeatureGroup(
@@ -57,7 +55,7 @@ def map_flights(df):
                 location=[row["latitude"], row["longitude"]],
                 tooltip=f"📞🪧: {row['callsign']}",
                 popup=popup_html,
-                icon=folium.Icon(icon="plane", color=color),
+                icon=folium.Icon(icon="plane", color=color, description=description),
             ).add_to(feature_groups[category])
     for feature in feature_groups.values():
         feature.add_to(map)
@@ -66,10 +64,15 @@ def map_flights(df):
     return map._repr_html_()
 
 
-def call_to_action(row, color):
+def call_to_action(row, color, description):  # noqa: F811
     return f"""
-            <div>
+            <div style='width: max-content;'>
                 <p><strong>Flight:</strong> {row['callsign']}</p>
-                <a href='/flight_path/{row['icao24']}/{color}'>See Flight Path</a>
+                <h2>Flight Details</h2>
+                <p><strong>Flight Number:</strong> {row['callsign']}</p>
+                <p><strong>Departure:</strong> {row['origin_country']}</p>
+                <p><strong>Speed:</strong> {row['velocity']}</p>
+                <p><strong>Category:</strong> {description}</p>
+                <a href='/flight_path/{row['icao24']}/{color}' target="_parent">See Flight Path</a>
             </div>
             """
