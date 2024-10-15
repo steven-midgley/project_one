@@ -1,6 +1,7 @@
 function openModal(flightId: string) {
-	const modal = document.getElementById('flightModal');
-	const modalContent = document.getElementById('modal-content');
+	const modal = document.getElementById('flightModal') || new HTMLElement();
+	const modalContent =
+		document.getElementById('modal-content') || new HTMLElement();
 
 	// Fetch flight data from Flask API using the flightId (icao24)
 	fetch(`/api/get_flight_data/${flightId}`)

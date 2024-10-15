@@ -71,10 +71,6 @@ def call_to_action(row):
     return f"""
             <div>
                 <p><strong>Flight:</strong> {row['callsign']}</p>
-                <a href='/crafy-details/{row['callsign']}'>View details</a>
+                <a href='/crafy-details/{row['icao24']}'>View details</a>
             </div>
             """
-
-
-# <strong>Arrival:</strong> {data['estArrivalAirport'] or "N/A"} <br/>
-# <strong>Departure:</strong> {data['estDepartureAirport'] or "N/A"} <br/>

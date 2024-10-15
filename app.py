@@ -1,9 +1,8 @@
 from opensky_api import OpenSkyApi
 from flask import Flask, render_template
-from notebooks.states import get_flights, get_flight_details
+from notebooks.scripts.flight_details import flight_details
 from notebooks.scripts.opensky import get_states
 from notebooks.scripts.map_flights import map_flights
-from notebooks.scripts.flight_details import flight_details
 
 app = Flask(__name__)
 
@@ -15,17 +14,14 @@ def home():
 
 @app.route("/all_crafts")
 def all_crafts():
-    get_states(OpenSkyApi())
-    flights = get_flights()
-    map_html = map_flights(flights)
+    map_html = map_flights(get_states(OpenSkyApi()))
     return render_template("index.html", map_html=map_html)
 
 
-@app.route("/crafy-details/<callsign>")
-def craft_details(callsign):
-    print(callsign)
-    flight = get_flight_details(callsign)
-    map_html = flight_details(flight)
+@app.route("/crafy-details/<icao24>")
+def craft_details(icao24):
+    print(icao24)
+    map_html = flight_details(icao24)
     return render_template("index.html", map_html=map_html)
 
 

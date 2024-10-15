@@ -38,12 +38,11 @@ def get_states(api):
             }
         )
 
-    df = pd.DataFrame(states_data)
-
-    df.to_csv("data/flight_states.csv", mode="w", header=True, index="icao24")
-    print()
-
-    pass
+    states_data = pd.DataFrame(states_data)
+    states_data = states_data[states_data.category > 0]
+    states_data = states_data.dropna(how="any")
+    states_data.to_csv("data/flight_states.csv", mode="w", header=True, index="icao24")
+    return states_data
 
 
 def get_arrivals(api, airport, begin, end):
@@ -125,44 +124,43 @@ def get_departures(api, airport, begin, end):
     pass
 
 
-def get_flights_by_aircraft(api, icao24, begin, end):
-    """Fetch flights by aircraft and save to a CSV file."""
-    flights = api.get_flights_by_aircraft(icao24, begin, end)
+def get_flight_details(api, icao24):
 
-    if flights is None:
-        print(f"aircraft data: {flights}")
+    flight = api.get_track_by_aircraft(icao24)
+
+    if flight is None:
+        print(f"aircraft data: {flight}")
         return
-
-    flights_data = []
-    for flight in flights:
-        flights_data.append(
+    print(flight)
+    details = []
+    for detail in flight:
+        details.append(
             {
-                "icao24": flight.icao24,
-                "firstSeen": flight.firstSeen,
+                "icao24": detail.icao24,
+                "firstSeen": detail.firstSeen,
                 "firstSeen_utc": datetime.fromtimestamp(
-                    flight.firstSeen, tz=timezone.utc
+                    detail.firstSeen, tz=timezone.utc
                 ),
-                "estDepartureAirport": flight.estDepartureAirport,
-                "lastSeen": flight.lastSeen,
+                "estDepartureAirport": detail.estDepartureAirport,
+                "lastSeen": detail.lastSeen,
                 "lastSeen_uts": datetime.fromtimestamp(
-                    flight.lastSeen, tz=timezone.utc
+                    detail.lastSeen, tz=timezone.utc
                 ),
-                "estArrivalAirport": flight.estArrivalAirport,
-                "callsign": flight.callsign,
-                "estDepartureAirportHorizDistance": flight.estDepartureAirportHorizDistance,
-                "estDepartureAirportVertDistance": flight.estDepartureAirportVertDistance,
-                "estArrivalAirportHorizDistance": flight.estArrivalAirportHorizDistance,
-                "estArrivalAirportVertDistance": flight.estArrivalAirportVertDistance,
-                "departureAirportCandidatesCount": flight.departureAirportCandidatesCount,
-                "arrivalAirportCandidatesCount": flight.arrivalAirportCandidatesCount,
+                "estArrivalAirport": detail.estArrivalAirport,
+                "callsign": detail.callsign,
+                "estDepartureAirportHorizDistance": detail.estDepartureAirportHorizDistance,
+                "estDepartureAirportVertDistance": detail.estDepartureAirportVertDistance,
+                "estArrivalAirportHorizDistance": detail.estArrivalAirportHorizDistance,
+                "estArrivalAirportVertDistance": detail.estArrivalAirportVertDistance,
+                "departureAirportCandidatesCount": detail.departureAirportCandidatesCount,
+                "arrivalAirportCandidatesCount": detail.arrivalAirportCandidatesCount,
             }
         )
 
-    df = pd.DataFrame(flights_data)
-
-    save_to_csv(df, "data/flights_by_aircraft.csv")
-
-    pass
+    details = pd.DataFrame(details)
+    details = details.dropna(how="any")
+    save_to_csv(details, "data/flights_by_aircraft.csv")
+    return details
 
 
 def get_flight_interval(api, begin, end):
@@ -212,66 +210,7 @@ def save_to_csv(df, file_path):
 
 
 if __name__ == "__main__":
-    now = datetime.now()
-    last_hour = now - timedelta(minutes=60)
-    unix_hour = int(last_hour.timestamp())
-    unix_now = int(now.timestamp())
+
     api = OpenSkyApi()
-    airports = [
-        "KATL",
-        "KSLC",
-        "KDFW",
-        "KDEN",
-        "KORD",
-        "OMDB",
-        "ESSA",
-        "LIMC",
-        "LIAU",
-        "EPKK",
-        "WSAC",
-        "YSBK",
-        "YMYB",
-        "YMEN",
-        "YKEL",
-        "YNHS",
-        "YMAV",
-        "YPJI",
-        "VECC",
-        "KS03",
-        "KABQ",
-    ]
-    crafts = [
-        "80162c",
-        "4b1818",
-        "aa3cbe",
-        "80162a",
-        "801638",
-        "3d10af",
-        "88044a",
-        "7c6b2f",
-        "aa56da",
-        "7c6b2d",
-        "88044d",
-        "407a38",
-        "7c6b41",
-        "7c6b40",
-        "a3b87f",
-        "8a02ff",
-        "880454",
-        "880452",
-        "80162f",
-        "880458",
-        "880457",
-    ]
 
     get_states(api)
-    get_flight_interval(api, unix_hour, unix_now)
-    for cr in crafts:
-        get_flights_by_aircraft(api, cr, unix_hour, unix_now)
-        time.sleep(1)
-    for ap in airports:
-        get_arrivals(api, ap, unix_hour, unix_now)
-        time.sleep(1)
-    for ap in airports:
-        get_departures(api, ap, unix_hour, unix_now)
-        time.sleep(1)
