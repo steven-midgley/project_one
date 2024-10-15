@@ -38,15 +38,18 @@ Through this analysis, we develop insights that highlight trends and anomalies i
 
 ## Objectives
 
-- Add info here ... (Include measurable goals like predicting flight delays, identifying delay trends, etc.)
+- Analyze overall flight delay distribution to understand delay trends.
+Examine delays by airlines and airports to identify underperforming entities.
+- Investigate delays by time of day and day of the week to pinpoint peak delay periods.
+- Perform correlation analysis to explore relationships between flight delays and factors such as distance and flight time.
+- Provide actionable insights and recommendations for airlines and airports to optimize operations and reduce delays.
 
 ---
 
 ## Data Sources 
 
 ### Kaggle Flight Data
-- [Kaggle Dataset](https://www.kaggle.com/datasets/mahoora00135/flights)
-The dataset from Kaggle includes historical flight data with over 1 million records. Key columns include:
+- [Kaggle Dataset](https://www.kaggle.com/datasets/mahoora00135/flights) The dataset from Kaggle includes historical flight data with over 1 million records. Key columns include:
 
 | Column         | Description                                                  |
 |----------------|--------------------------------------------------------------|
@@ -62,8 +65,7 @@ The dataset from Kaggle includes historical flight data with over 1 million reco
 | `air_time`     | Total time in the air (minutes)
 
 ### OpenSky API Data
-- [OpenSky API](https://github.com/openskynetwork/opensky-api)
-The OpenSky API provides real-time flight tracking. This data can be used to compare with historical data to enhance predictions or validate findings.
+- [OpenSky API](https://github.com/openskynetwork/opensky-api) The OpenSky API provides real-time flight tracking. This data can be used to compare with historical data to enhance predictions or validate findings.
 
 ---
 
@@ -114,6 +116,17 @@ The OpenSky API provides real-time flight tracking. This data can be used to com
 - If you encounter issues with `python3`, use `python`.
 
 ---
+
+## Tech Stack Setup
+
+This project utilizes a dynamic tech stack to run the web application and generate interactive maps in real-time. Here’s a breakdown of the stack:
+
+- **Flask:** The backend web framework handling routing and server-side logic.
+- **Folium:** For dynamic map creation, allowing us to visualize flight paths and data on the map.
+- **Pyodide:** Runs Python code directly in the browser, enabling client-side execution for future expansion.
+- **Jinja2 Templating:** Used in Flask for rendering dynamic content on the web pages.
+- **DigitalOcean Droplet:** Our deployment platform, providing a serverless experience for running the Python project.
+- **Gunicorn:** A WSGI HTTP server used to serve the Flask application in production.
 
 ## Exploratory Data Analysis (EDA)
 
