@@ -125,42 +125,9 @@ def get_departures(api, airport, begin, end):
 
 
 def get_flight_details(api, icao24):
-
     flight = api.get_track_by_aircraft(icao24)
-
-    if flight is None:
-        print(f"aircraft data: {flight}")
-        return
-    print(flight)
-    details = []
-    for detail in flight:
-        details.append(
-            {
-                "icao24": detail.icao24,
-                "firstSeen": detail.firstSeen,
-                "firstSeen_utc": datetime.fromtimestamp(
-                    detail.firstSeen, tz=timezone.utc
-                ),
-                "estDepartureAirport": detail.estDepartureAirport,
-                "lastSeen": detail.lastSeen,
-                "lastSeen_uts": datetime.fromtimestamp(
-                    detail.lastSeen, tz=timezone.utc
-                ),
-                "estArrivalAirport": detail.estArrivalAirport,
-                "callsign": detail.callsign,
-                "estDepartureAirportHorizDistance": detail.estDepartureAirportHorizDistance,
-                "estDepartureAirportVertDistance": detail.estDepartureAirportVertDistance,
-                "estArrivalAirportHorizDistance": detail.estArrivalAirportHorizDistance,
-                "estArrivalAirportVertDistance": detail.estArrivalAirportVertDistance,
-                "departureAirportCandidatesCount": detail.departureAirportCandidatesCount,
-                "arrivalAirportCandidatesCount": detail.arrivalAirportCandidatesCount,
-            }
-        )
-
-    details = pd.DataFrame(details)
-    details = details.dropna(how="any")
-    save_to_csv(details, "data/flights_by_aircraft.csv")
-    return details
+    # save_to_csv(pd.DataFrame(flight), "data/flights_by_aircraft.csv")
+    return flight
 
 
 def get_flight_interval(api, begin, end):
