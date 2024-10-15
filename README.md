@@ -239,37 +239,118 @@ Add info here... (Summarize the overall findings and the value of the analysis.)
 
 ### 1. **Branching and Git Commands**
 
-- Create a new branch for each task.
-- If not on `main`, switch to it:
+- **Create a new branch for each task**:
+  - Before starting a new feature or task, create a new branch.
+  
+     ```bash
+     git checkout -b <branch-name>
+     ```
+
+- **If not on `main`, switch to it**:
+  - Ensure you are working from the latest version of the main branch.
 
      ```bash
      git switch main
      git pull origin main
-     git checkout -b <branch-name>
      ```
 
-- Commit and push frequently:
+- **Commit and push frequently**:
+  - Always commit frequently and push your changes to avoid losing progress.
 
      ```bash
      git status
      git add .
      git commit -m 'commit message'
-     git push
+     git push origin <branch-name>
      ```
 
-- For the first push of a new branch:
+- **For the first push of a new branch**:
+  - If it's your first push to a new branch, set the upstream reference.
 
      ```bash
      git push --set-upstream origin <branch-name>
      ```
+
 ---
+
+### 2. **Merging Branches**
+
+- **Ensure your branch is up to date**:
+  - Before merging into `main`, ensure your feature branch is up to date with the latest changes from `main`.
+
+     ```bash
+     git checkout <branch-name>
+     git pull origin main
+     ```
+
+- **Merge your branch into `main`**:
+  - Once your branch is tested and ready, merge it into the `main` branch.
+
+     ```bash
+     git checkout main
+     git merge <branch-name>
+     git push origin main
+     ```
+
+- **Resolve any merge conflicts**:
+  - If you encounter any merge conflicts, resolve them manually and complete the merge.
+
+---
+
+### 3. **Deploying to DigitalOcean Droplet**
+
+- **Connect to the DigitalOcean droplet**:
+  - Use SSH to access the droplet.
+
+     ```bash
+     ssh root@<your-droplet-ip>
+     ```
+
+- **Pull the latest changes**:
+  - Once connected, navigate to your project directory and pull the latest changes from the `main` branch.
+
+     ```bash
+     cd /path/to/your/project
+     git pull origin main
+     ```
+
+- **Restart the application**:
+  - After pulling changes, restart your Flask app using Gunicorn or the process manager you are using (e.g., `systemctl` or `supervisor`).
+
+     ```bash
+     systemctl restart gunicorn
+     ```
+
+---
+
+### 4. **Environment Setup (Optional)**
+
+- If you are setting up your DigitalOcean droplet for the first time, you will need to:
+  - Clone the repository
+     ```bash
+     git clone https://github.com/<your-repo-url>.git
+     ```
+  - Set up a Python virtual environment and install dependencies:
+     ```bash
+     python3 -m venv venv
+     source venv/bin/activate
+     pip install -r requirements.txt
+     ```
 
 ## Branch Discipline
 
-- **Protected Branch:** `main` – Managed by the project manager. No direct pushes allowed.
-- **Testing Branch:** `stage` – All code contributions are merged into `stage` .
-- Once `stage` is stable and conflict-free, it will be merged into `main`.
+- **Protected Branch:** `main` – Managed by the project manager. No direct pushes are allowed to `main`. All code merged into `main` should be thoroughly tested and approved.
+  
+- **Testing Branch:** `stage` – All feature branches and code contributions are merged into `stage` for testing. Once the `stage` branch is stable and conflict-free, it will be merged into `main`.
 
+- **Feature Branches:** All new features, bug fixes, or updates must be developed in their own feature branches. These branches should be named descriptively based on the task (e.g., `feature/interactive-map` or `bugfix/api-errors`).
+
+  ```bash
+  git checkout -b feature/<feature-name>
+
+- **Pull Requests:** Code should be merged into stage or main through pull requests (PRs). PRs should include clear descriptions of the changes and any testing that has been done. Team members should review and approve the PR before it is merged.
+
+- **Code Review Process:** Before merging into stage or main, the code should go through a review process to ensure it meets quality standards, contains proper documentation, and does not introduce any conflicts or issues.
 --- 
 
 ## Team Members
