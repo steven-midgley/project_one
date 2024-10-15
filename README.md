@@ -8,8 +8,6 @@
 
 ## Table of Contents
 
-## Table of Contents
-
 - [Project Overview](#project-overview)
 - [Objectives](#objectives)
 - [Data Sources](#data-sources)
