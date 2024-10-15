@@ -154,6 +154,32 @@ Explanation:
 
 ---
 
+## Interactive Map Features 
+
+The project includes an interactive map that dynamically displays flight paths and other flight data. The map is generated using Folium and Flask, allowing users to explore different aspects of the dataset.
+
+### **Features:**
+
+1. **Dynamic Map Creation:**
+- Maps are generated dynamically on-demand based on flight data from the flight_states.csv file.
+- The map renders flight paths and uses markers and polylines to represent flight categories and paths.
+- Flight markers are color-coded based on aircraft categories.
+
+2. **Routes in Flask:**
+- **/:** Home page where users can run Python code via Pyodide.
+- **/all_crafts:** Generates a map of all tracked flights and renders it dynamically on a separate HTML page.
+- **/icao24_flight_path:** Generates specific flight paths using Folium and the flight's icao24 code.
+
+3. **Deployment:**
+- The web app is deployed on a DigitalOcean Droplet, allowing for a serverless experience. All code is run through Flask, served via Gunicorn, and dynamically renders the maps without any hardcoded HTML.
+
+4. **Real-Time Data Handling:**
+- The app dynamically reads flight data (from CSV) and feeds it into the map to reflect real-time or pre-recorded flight paths.
+
+5. **Automation:**
+- A script automatically converts Jupyter notebooks (.ipynb) to Python scripts (.py), allowing for seamless integration with the Flask app. The script can be found at notebooks/scripts/ipynb_script_converter.py.
+
+
 ## Results and Insights
 
 - Add info here.... (Describe the results you obtained, highlighting any important findings related to flight delays or predictions.) 
