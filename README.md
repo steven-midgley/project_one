@@ -133,7 +133,12 @@ This project utilizes a dynamic tech stack to run the web application and genera
 In this section, we present statistical summaries and visualizations derived from the flight behavior data. These insights help us understand key performance indicators related to flight operations.
 
 ### Key Insights from Flight Data
-- Add info here... (Summarize the key insights and trends found during your data exploration, such as peak delay times or busiest airports.)
+
+- **Overall Delay Trends:** Most flights experience minimal delays, but certain airlines and airports show consistently higher delays.
+- **Airline Performance:** Frontier Airlines and AirTran Airways were identified as underperforming in terms of on-time arrivals, while Alaska Airlines consistently arrives early.
+- **Airport Efficiency:** Newark Liberty International Airport (EWR) had the highest average delays, while smaller regional airports tended to perform better.
+- **Time-Based Delays:** Flights scheduled during late-night hours (12 AM to 3 AM) and afternoon peak times (5 PM to 7 PM) were more likely to be delayed.
+- **Correlation Findings:** Distance and flight time showed weak correlations with delays, indicating that other factors (such as weather or operational inefficiencies) are likely contributing to delays.
 
 ### Sample Visualizations
 
