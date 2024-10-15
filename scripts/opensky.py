@@ -1,7 +1,5 @@
 import os
-import time
-from opensky_api import OpenSkyApi
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 import pandas as pd
 
 
@@ -79,8 +77,7 @@ def get_arrivals(api, airport, begin, end):
         )
 
     df = pd.DataFrame(arrival_data)
-
-    save_to_csv(df, "data/arrivals.csv")
+    df.to_csv("data/arrivals.csv", mode="w", header=True, index="icao24")
 
     pass
 
@@ -118,15 +115,13 @@ def get_departures(api, airport, begin, end):
         )
 
     df = pd.DataFrame(departure_data)
-
-    save_to_csv(df, "data/departures.csv")
+    df.to_csv("data/departures.csv", mode="w", header=True, index="icao24")
 
     pass
 
 
 def get_flight_details(api, icao24):
     flight = api.get_track_by_aircraft(icao24)
-    # save_to_csv(pd.DataFrame(flight), "data/flights_by_aircraft.csv")
     return flight
 
 

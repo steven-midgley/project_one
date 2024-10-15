@@ -4,7 +4,8 @@ from scripts.opensky import get_flight_details
 
 
 def flight_path(icao24, color):
-    data = get_flight_details(OpenSkyApi(), icao24)
+    api = OpenSkyApi()
+    data = get_flight_details(api, icao24)
 
     origin_lat = data.path[0][1]
     curr_lat = data.path[len(data.path) - 1][1]

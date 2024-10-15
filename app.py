@@ -1,6 +1,5 @@
 from opensky_api import OpenSkyApi
 from flask import Flask, render_template
-from scripts.welcome_maps import welcome_map
 from scripts.flight_path import flight_path
 from scripts.opensky import get_states
 from scripts.map_flights import map_flights
