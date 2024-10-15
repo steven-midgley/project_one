@@ -22,6 +22,7 @@
 - [Deployment Workflow](#deployment-workflow)
 - [Branch Discipline](#branch-discipline)
 - [Team Members](#team-members)
+- [Contact The Team](#contact-the-team)
 - [Acknowledgments](#acknowledgments)
 
 ---
@@ -450,6 +451,18 @@ Further research could incorporate external factors, such as weather conditions 
 - **Steven Midgley**
 - **Dane Larsen**
 - **Leslie Barrera Dorantes**
+
+---
+
+## Contact The Team
+
+If you have any questions or need assistance regarding the project or the code, feel free to reach out to any of the team members below:
+
+- **Steven Midgley**: [Email Steven](steven.midgley@maggiesottero.com)
+- **Dane Larsen**: [Email Dane](danelarsen12@gmail.com)
+- **Leslie Barrera Dorantes**: [Email Leslie](lesliebarrera.d@gmail.com)
+
+We appreciate your feedback and look forward to hearing from you!
 
 ---
 
