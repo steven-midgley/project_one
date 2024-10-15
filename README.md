@@ -188,10 +188,15 @@ The project includes an interactive map that dynamically displays flight paths a
 
 ## Conclusion
 
-Add info here... (Summarize the overall findings and the value of the analysis.)
+This exploratory data analysis of flight delays has provided valuable insights into the factors contributing to delays. While many flights experience only minimal delays, certain airlines and airports consistently underperform. Larger airports like Newark Liberty (EWR) and airlines such as Frontier and AirTran Airways show significant opportunities for operational improvements.
+
+Further research could incorporate external factors, such as weather conditions or seasonal trends, to provide a more comprehensive understanding of delay causes. By implementing the recommendations derived from this analysis, airlines and airports can work toward reducing delays, improving operational efficiency, and enhancing customer satisfaction.
 
 ### Future Work:
-- Add info here... (List any areas for improvement or further analysis, such as incorporating weather data or expanding the dataset.) 
+
+- **Incorporating Weather Data**: Adding weather data could help better explain delays related to specific environmental factors.
+- **Seasonal Trends**: Analyzing data across different seasons or holidays could reveal additional trends in flight delays.
+- **Predictive Modeling**: Building a predictive model to forecast delays based on the findings from this analysis could further optimize airline and airport operations.
 
 ---
 
