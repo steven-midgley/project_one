@@ -223,8 +223,13 @@ Add info here... (Summarize the overall findings and the value of the analysis.)
      ```
 
 ## References and Credits
+
 - [Pandas Documentation](https://pandas.pydata.org/)
 - [Matplotlib Documentation](https://matplotlib.org/)
+- [Folium Documentation](https://python-visualization.github.io/folium/)
+- [Flask Documentation](https://flask.palletsprojects.com/)
+- [Pyodide Documentation](https://pyodide.org/en/stable/)
+- [Gunicorn Documentation](https://gunicorn.org/)
 - [OpenSky Network API](https://openskynetwork.github.io/opensky-api/)
 - [Kaggle Dataset](https://www.kaggle.com/datasets/mahoora00135/flights)
 
