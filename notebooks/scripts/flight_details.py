@@ -28,32 +28,30 @@ def flight_details(icao24):
         "white",
     ]
 
-    origin_lat = data.iloc[0].latitude
-    origin_lon = data.iloc[0].longitude
-    way_points = []
+    origin_lat = data.path[0][1]
+    origin_lon = data.path[0][2]
+    way_points = [(p[1], p[2]) for p in data.path]
 
     map = folium.Map(
         location=[origin_lat, origin_lon],
         zoom_start=4,
         tiles=folium.TileLayer(no_wrap=True),
     )
-    for index, row in data.iterrows():
 
-        folium.Marker(
-            location=[row["latitude"], row["longitude"]],
-            tooltip="📝",
-            popup="Flight Path",
-            icon=folium.Icon(icon="plane", color=poly_colors[index % len(poly_colors)]),
-        ).add_to(map)
+    folium.Marker(
+        location=[origin_lat, origin_lon],
+        tooltip="📝",
+        popup="Flight Path",
+        icon=folium.Icon(
+            icon="plane", color=poly_colors[way_points % len(poly_colors)]
+        ),
+    ).add_to(map)
 
-        way_points.append([row["latitude"], row["longitude"]])
-
-    for point in range(len(way_points) - 1):
-        folium.PolyLine(
-            (way_points[point], way_points[point + 1]),
-            color=poly_colors[point % len(poly_colors)],
-            weight=2.5,
-            opacity=1,
-        ).add_to(map)
+    folium.PolyLine(
+        locations=way_points,
+        color=poly_colors[way_points % len(poly_colors)],
+        weight=2.5,
+        opacity=1,
+    ).add_to(map)
 
     return map._repr_html_()
