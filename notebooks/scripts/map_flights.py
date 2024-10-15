@@ -28,11 +28,10 @@ craft_categories = {
 
 
 def map_flights(df):
-    # location=[39.8283, -98.5795] >> replace this with the lon lat of the origin country
     map = folium.Map(
         location=(0, 0),
         zoom_control=True,
-        zoom_start=2,
+        zoom_start=3,
         tiles=folium.TileLayer(no_wrap=True),
     )
     feature_groups = {}
