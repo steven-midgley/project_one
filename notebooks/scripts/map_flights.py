@@ -1,3 +1,4 @@
+import datetime
 import folium
 import pandas as pd
 
@@ -26,7 +27,7 @@ craft_categories = {
 }
 
 
-def add_to_map(df):
+def map_flights(df):
     # location=[39.8283, -98.5795] >> replace this with the lon lat of the origin country
     map = folium.Map(
         location=(0, 0),
@@ -38,7 +39,6 @@ def add_to_map(df):
 
     for index, row in df.iterrows():
         if pd.notna(row["longitude"]) and pd.notna(row["latitude"]):
-
             category = row["category"]
 
             if category not in craft_categories:
@@ -47,20 +47,34 @@ def add_to_map(df):
             else:
                 description, color = list(craft_categories[category].items())[0]
 
-            if description not in feature_groups:
-                feature_groups[description] = folium.FeatureGroup(
-                    name=description, show=True
+            popup_html = call_to_action(row)
+
+            if category not in feature_groups:
+                feature_groups[category] = folium.FeatureGroup(
+                    name=f"{description} ({category})"
                 )
 
             folium.Marker(
                 location=[row["latitude"], row["longitude"]],
-                tooltip="📝",
-                popup=description,
+                tooltip=f"📞🪧: {row['callsign']}",
+                popup=popup_html,
                 icon=folium.Icon(icon="plane", color=color),
-            ).add_to(feature_groups[description])
-
+            ).add_to(feature_groups[category])
     for feature in feature_groups.values():
         feature.add_to(map)
 
     folium.LayerControl().add_to(map)
     return map._repr_html_()
+
+
+def call_to_action(row):
+    return f"""
+            <div>
+                <p><strong>Flight:</strong> {row['callsign']}</p>
+                <a href='/crafy-details/{row['callsign']}'>View details</a>
+            </div>
+            """
+
+
+# <strong>Arrival:</strong> {data['estArrivalAirport'] or "N/A"} <br/>
+# <strong>Departure:</strong> {data['estDepartureAirport'] or "N/A"} <br/>

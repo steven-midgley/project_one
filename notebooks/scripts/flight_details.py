@@ -1,7 +1,7 @@
 import folium
 
 
-def track_flight_icao24(craft_df):
+def flight_details(craft_df):
     poly_colors = [
         "green",
         "blue",

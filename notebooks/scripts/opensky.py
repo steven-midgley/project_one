@@ -5,7 +5,6 @@ from datetime import datetime, timedelta, timezone
 import pandas as pd
 
 
-# DO MORE WITH THIS DATASET.
 def get_states(api):
     """Fetch and save the current states of all flights to a CSV file."""
     states = api.get_states()
@@ -126,7 +125,6 @@ def get_departures(api, airport, begin, end):
     pass
 
 
-# EXPERIMENTAL WORK BY API SO NOT THE MOST RELIABLE SOURCE OF INFO
 def get_flights_by_aircraft(api, icao24, begin, end):
     """Fetch flights by aircraft and save to a CSV file."""
     flights = api.get_flights_by_aircraft(icao24, begin, end)
@@ -277,4 +275,3 @@ if __name__ == "__main__":
     for ap in airports:
         get_departures(api, ap, unix_hour, unix_now)
         time.sleep(1)
-# HERE GIVE THE icao24 AND DATES IN UNIX TIMESTAMP FORMATION

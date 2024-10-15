@@ -62,23 +62,17 @@ f_sts_df = f_sts_df[f_sts_df.category > 0]
 # In[21]:
 
 
-def get_us_flights():
-    US_flights = pd.DataFrame(f_sts_df[f_sts_df.origin_country == "United States"])
-    US_flights = US_flights.dropna(how="any")
-    return US_flights
+def get_flights():
+    return f_sts_df
 
 
 # In[22]:
 
 
-def get_craft_flights():
+def get_flight_details():
     icao24_craft = pd.DataFrame(f_sts_df[f_sts_df.icao24 == "adc9b6"])
     icao24_craft = icao24_craft.dropna(how="any")
     return icao24_craft
 
 
 # In[ ]:
-
-
-
-
