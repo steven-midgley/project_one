@@ -16,7 +16,7 @@ echo "Verifying installed packages..."
 pip freeze
 
 echo "Running application..."
-gunicorn -w 1 -b 0.0.0.0:80 app:app
+gunicorn -w 4 -b 0.0.0.0:80 app:app
 
 
 
