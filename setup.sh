@@ -10,7 +10,7 @@ echo "Activating virtual environment..."
 source "$ENV_DIR/bin/activate"
 
 echo "Installing requirements..."
-pip install -r "$PROJECT_DIR/requirements.txt"
+pip install -r "$PROJECT_DIR/requirements.txt" --force-reinstall
 
 echo "Verifying installed packages..."
 pip freeze
