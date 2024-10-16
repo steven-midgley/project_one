@@ -34,7 +34,7 @@ def map_flights(df):
     for index, row in df.iterrows():
         if pd.notna(row["longitude"]) and pd.notna(row["latitude"]):
             map = folium.Map(
-                location=(row[0]["longitude"], row[0]["latitude"]),
+                location=(48.3769, -99.9962),
                 zoom_control=True,
                 zoom_start=4,
                 tiles=folium.TileLayer(no_wrap=True),
