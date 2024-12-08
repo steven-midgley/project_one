@@ -1,6 +1,6 @@
 # Project 1: Analyzing Flight Behavior Patterns
 
-<div style="text-align: center;">
+<div style="display: block; margin: auto;">
     <img src="images/airplane.jpeg" alt="Airplane" width="500" />
 </div>
 
